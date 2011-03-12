@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/areas/admin/content/css/01-reset.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/areas/admin/content/css/02-tools.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/areas/admin/content/css/05-common.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/areas/admin/content/css/10-layout.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/areas/admin/scripts/01-jquery-1.5.1.min.js")"></script>
+    <script src="@Url.Content("~/areas/admin/scripts/10-common.js")"></script>
+</head>
+<body>
+    <div id="head">
+        <div style="float: right">
+            1andy | <a href="#">My account</a> | <a href="#">Sign out</a>
+        </div>
+        <a href="#" style="font-weight: bold; text-decoration: none">Store Home</a>
+    </div>
+    <div id="green-top">
+        <div class="container-inner">
+            <h1 id="title">
+                <script>
+                    @{/*write shadow for browsers that do not support text-shadow property*/}
+                    if ($("<div/>")[0].style.textShadow !== '') {
+                        document.write("<a href='javascript:void(0)' id='title-shadow'>Jama Stuff</a>")
+                    }
+                </script>
+                <a href="javascript:void(0)">Jama Stuff</a>
+            </h1>
+        </div>
+        <ul id="nav" class="container-inner clearfix">
+            <li><a href="javascript:void(0)">
+                <img src="@Url.Content("~/Content/home.png")"
+                    style="position: relative; top: 3px; border: none; height: 16px; width: 16px;" /></a></li>
+            @*<li class="active"><a href="javascript:;">
+                <img src="@Url.Content("~/Content/home-active.png")"
+                    style="position: relative; top: 3px; border: none; height: 16px; width: 16px;" /></a></li>*@
+            <li><a href="javascript:void(0)">Orders (1)</a></li>
+            <li><a href="javascript:void(0)">Customers</a></li>
+            <li class="active"><a href="javascript:void(0)">Products</a></li>
+            <li><a href="javascript:void(0)">Content</a></li>
+            <li><a href="javascript:void(0)">Marketing</a></li>
+            <li class="minor"><a href="javascript:void(0)">Settings</a></li>
+            <li class="minor"><a href="javascript:void(0)" class="minor">Maintenance</a></li>
+        </ul>
+    </div>
+    <div class="container-inner">
+        <div id="content">
+            <div id="subnav">
+                <a href="#">Add new product</a> <span class="delim">|</span> <b>Search for</b>
+                <input type="text" />
+                <input type="button" value="Search" />
+                <span class="delim">|</span> <a href="#">Advanced search</a> <span class="delim">|</span>
+                See also <a href="#">Manage Categories and Vendors</a>
+            </div>
+            @RenderBody()
+        </div>
+        <div id="footer">
+            Powered by PLEX commerce
+        </div>
+    </div>
+</body>
+</html>
