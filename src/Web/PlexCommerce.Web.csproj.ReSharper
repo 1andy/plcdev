@@ -1,0 +1,6 @@
+<Configuration>
+  <NamespaceFolders>
+    <SkipFolder>069B03B8-F196-4F43-A246-CD33CC468F4C/d:Lib</SkipFolder>
+    <SkipFolder>069B03B8-F196-4F43-A246-CD33CC468F4C/d:Common</SkipFolder>
+  </NamespaceFolders>
+</Configuration>
