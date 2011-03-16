@@ -1,0 +1,20 @@
+﻿@model SharedLayoutViewModel
+<li@(Model.ActiveTab == "home" ? " class=active" : string.Empty) id="tab-home"><a href="@Url.Action(null, "Home")">
+    @{
+        var homeImageUrl = Url.Content("~/Areas/Admin/Content/img/" + (Model.ActiveTab == "home" ? "home-active.png" : "home.png"));
+    }
+    <img src="@homeImageUrl" /></a></li>
+<li@(Model.ActiveTab == "orders" ? " class=active" : string.Empty)><a href="@Url.Action(null, "Orders")">
+    Orders (1)</a></li>
+<li@(Model.ActiveTab == "customers" ? " class=active" : string.Empty)><a href="@Url.Action(null, "Customers")">
+    Customers</a></li>
+<li@(Model.ActiveTab == "products" ? " class=active" : string.Empty)><a href="@Url.Action(null, "Products")">
+    Products</a></li>
+<li@(Model.ActiveTab == "content" ? " class=active" : string.Empty)><a href="javascript:void(0)">
+    Content</a></li>
+<li@(Model.ActiveTab == "marketing" ? " class=active" : string.Empty)><a href="javascript:void(0)">
+    Marketing</a></li>
+<li class="minor@(Model.ActiveTab == "settings" ? " active" : string.Empty)"><a href="javascript:void(0)">
+    Settings</a></li>
+<li class="minor@(Model.ActiveTab == "maintenance" ? " active" : string.Empty)"><a
+    href="javascript:void(0)" class="minor">Maintenance</a></li>

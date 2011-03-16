@@ -1,4 +1,4 @@
-﻿@model PlexCommerce.Web.Areas.Admin.SharedLayoutViewModel
+﻿@model SharedLayoutViewModel
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,19 +31,7 @@
             </h1>
         </div>
         <ul id="nav" class="container-inner clearfix">
-            <li><a href="javascript:void(0)">
-                <img src="@Url.Content("~/Content/home.png")"
-                    style="position: relative; top: 3px; border: none; height: 16px; width: 16px;" /></a></li>
-            @*<li class="active"><a href="javascript:;">
-                <img src="@Url.Content("~/Content/home-active.png")"
-                    style="position: relative; top: 3px; border: none; height: 16px; width: 16px;" /></a></li>*@
-            <li><a href="javascript:void(0)">Orders (1)</a></li>
-            <li><a href="javascript:void(0)">Customers</a></li>
-            <li class="active"><a href="javascript:void(0)">Products</a></li>
-            <li><a href="javascript:void(0)">Content</a></li>
-            <li><a href="javascript:void(0)">Marketing</a></li>
-            <li class="minor"><a href="javascript:void(0)">Settings</a></li>
-            <li class="minor"><a href="javascript:void(0)" class="minor">Maintenance</a></li>
+            @{Html.RenderPartial("LayoutTabs", Model);}
         </ul>
     </div>
     <div class="container-inner">

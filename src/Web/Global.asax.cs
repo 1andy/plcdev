@@ -17,7 +17,11 @@ namespace PlexCommerce.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute("Default",
+            //routes.Add(new LowercaseRoute("{controller}/{action}/{id}",
+            //    new RouteValueDictionary(new { controller = "Home", action = "Index", id = UrlParameter.Optional }),
+            //    new MvcRouteHandler()));
+
+            routes.MapLowercaseRoute("Default",
                             "{controller}/{action}/{id}",
                             new { controller = "Home", action = "Index", id = UrlParameter.Optional });
         }

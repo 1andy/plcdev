@@ -16,5 +16,12 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 
             return View(model);
         }
+
+        protected override void SetAdditionalViewModelData(object modelObject)
+        {
+            var model = (SharedLayoutViewModel)modelObject;
+            model.ActiveTab = "home";
+            base.SetAdditionalViewModelData(model);
+        }
     }
 }

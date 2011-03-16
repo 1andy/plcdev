@@ -8,13 +8,21 @@ using System.Web.WebPages;
 namespace PlexCommerce.Web.Areas.Admin.Controllers
 {
 
-    public class ProductController : AdminControllerBase
+    public class ProductsController : AdminControllerBase
     {
         public ActionResult Index()
         {
             var model = new ProductIndexViewModel();
 
             return View(model);
+        }
+
+
+        protected override void SetAdditionalViewModelData(object modelObject)
+        {
+            var model = (SharedLayoutViewModel)modelObject;
+            model.ActiveTab = "products";
+            base.SetAdditionalViewModelData(model);
         }
     }
 }

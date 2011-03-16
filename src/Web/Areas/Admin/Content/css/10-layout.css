@@ -1,6 +1,6 @@
 ﻿*
 {
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family: "Segoe UI" , Arial, sans-serif;
 }
 
 .container-inner
@@ -83,7 +83,7 @@ a#title-shadow
     border-radius: 2px 2px 0 0;
 }
 
-#nav li.minor 
+#nav li.minor
 {
     float: right;
 }
@@ -120,11 +120,14 @@ a#title-shadow
     font-weight: bold;
 }
 
-#nav li.separate
+#tab-home img
 {
-    margin-left: 50px;
+    position: relative;
+    top: 3px;
+    border: none;
+    height: 16px;
+    width: 16px;
 }
-
 
 #subnav
 {
