@@ -8,11 +8,11 @@ using System.Web.WebPages;
 namespace PlexCommerce.Web.Areas.Admin.Controllers
 {
 
-    public class HomeController : AdminControllerBase
+    public class ProductController : AdminControllerBase
     {
         public ActionResult Index()
         {
-            var model = new SharedLayoutViewModel();
+            var model = new ProductIndexViewModel();
 
             return View(model);
         }

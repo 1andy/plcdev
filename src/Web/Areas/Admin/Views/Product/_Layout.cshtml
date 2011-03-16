@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+@section subnav{
+    <a href="#">Add new product</a> <span class="delim">|</span> <b>Search for</b>
+    <input type="text" />
+    <input type="button" value="Search" />
+    <span class="delim">|</span> <a href="#">Advanced search</a> <span class="delim">|</span>
+    See also <a href="#">Manage Categories and Vendors</a>
+}
+@RenderBody()
