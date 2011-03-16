@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>
-        @ViewBag.Title @(ViewBag.Title != null ? "-" : string.Empty)
+        @Model.Title @(Model.Title != null ? "-" : string.Empty)
         @Model.StoreName
     </title>
     <link href="@Url.Content("~/areas/admin/content/css/01-reset.css")" rel="stylesheet" type="text/css" />
@@ -14,15 +14,13 @@
     <script src="@Url.Content("~/areas/admin/scripts/10-common.js")"></script>
 </head>
 <body>
-    @{
-
-        var a = PageContext;
-    }
     <div id="head">
         <div style="float: right">
-            @Model.UserName | <a href="#">My account</a> | <a href="#">Sign out</a>
+            @Model.UserName &nbsp;&nbsp; <a href="#">My account</a> &nbsp;&nbsp; <a href="#">Sign
+                out</a>
         </div>
-        <a href="#" style="font-weight: bold; text-decoration: none">Store Home</a>
+        <a href="@Url.Content("~/")" style="font-weight: bold; text-decoration: none">Store
+            Home</a>
     </div>
     <div id="green-top">
         <div class="container-inner">

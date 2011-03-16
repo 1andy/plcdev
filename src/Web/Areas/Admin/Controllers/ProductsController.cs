@@ -7,22 +7,36 @@ using System.Web.WebPages;
 
 namespace PlexCommerce.Web.Areas.Admin.Controllers
 {
-
+    [ValidateInput(false)]
     public class ProductsController : AdminControllerBase
     {
-        public ActionResult Index()
+        
+        public ActionResult Index(string q)
         {
             var model = new ProductIndexViewModel();
 
             return View(model);
         }
 
-
-        protected override void SetAdditionalViewModelData(object modelObject)
+        public ActionResult Add()
         {
-            var model = (SharedLayoutViewModel)modelObject;
-            model.ActiveTab = "products";
-            base.SetAdditionalViewModelData(model);
+            var model = new ProductAddViewModel();
+
+            return View(model);
         }
+
+        public ActionResult Search()
+        {
+            var model = new ProductSearchViewModel();
+
+            return View(model);
+        }
+
+        //protected override void SetAdditionalViewModelData(object modelObject)
+        //{
+        //    var model = (SharedLayoutViewModel)modelObject;
+        //    model.ActiveTab = "products";
+        //    base.SetAdditionalViewModelData(model);
+        //}
     }
 }

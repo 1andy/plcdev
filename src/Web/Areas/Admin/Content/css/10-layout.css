@@ -143,9 +143,36 @@ a#title-shadow
     padding: 0 6px;
 }
 
+#subnav div, #subnav form
+{
+    display: inline;
+}
+
 #subnav input
 {
     margin: 0;
+}
+
+#subnav input[type=submit]
+{
+    font-weight: normal;
+}
+
+#subnav .active .text
+{
+    font-weight: bold;
+}
+
+#subnav .active a
+{
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+}
+
+#subnav .active input[type=submit]
+{
+    font-weight: bold;
 }
 
 /* Footer */

@@ -2,6 +2,9 @@
 
 namespace PlexCommerce.Web
 {
+    /// <summary>
+    /// This is a helper Route implementation that produces lower case urls.
+    /// </summary>
     public class LowercaseRoute : Route
     {
         public LowercaseRoute(string url, IRouteHandler routeHandler)
