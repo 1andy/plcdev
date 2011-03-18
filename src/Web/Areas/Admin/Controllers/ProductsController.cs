@@ -10,7 +10,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
     [ValidateInput(false)]
     public class ProductsController : AdminControllerBase
     {
-        
+
         public ActionResult Index(string q)
         {
             var model = new ProductIndexViewModel();
@@ -28,6 +28,13 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
         public ActionResult Search()
         {
             var model = new ProductSearchViewModel();
+
+            return View(model);
+        }
+
+        public ActionResult Categories()
+        {
+            var model = new ProductCategoriesViewModel();
 
             return View(model);
         }

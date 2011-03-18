@@ -18,8 +18,8 @@
         @Html.ActionLink("Advanced search", "Search")
     </div>
     <span class="delim">|</span>
-    <div>
-        See also <a href="#">Manage Categories and Vendors</a>
+    <div@(Model.ActiveSubnav == "categories" ? " class=active" : string.Empty)>
+        @Html.ActionLink("Manage Categories", string.Empty, "Categories")
     </div>
 }
 @RenderBody()

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace PlexCommerce.Web.Areas.Admin
 {
@@ -19,6 +20,22 @@ namespace PlexCommerce.Web.Areas.Admin
         #endregion
     }
 
+    public class CategoriesIndexViewModel : SharedLayoutViewModel
+    {
+
+    }
+
+    public class CategoriesAddViewModel : SharedLayoutViewModel
+    {
+        public CategoriesAddForm AddForm { get; set; }
+    }
+
+    public class CategoriesAddForm
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+    }
+
     public class ProductIndexViewModel : SharedLayoutViewModel
     {
 
@@ -32,5 +49,16 @@ namespace PlexCommerce.Web.Areas.Admin
     public class ProductSearchViewModel : SharedLayoutViewModel
     {
 
+    }
+
+    public class ProductCategoriesViewModel : SharedLayoutViewModel
+    {
+        public IEnumerable<ProductCategoryData> Categories { get; set; }
+    }
+
+    public class ProductCategoryData
+    {
+        public int CategoryID { get; set; }
+        public string Name { get; set; }
     }
 }

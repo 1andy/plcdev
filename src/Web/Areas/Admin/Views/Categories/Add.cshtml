@@ -1,0 +1,46 @@
+﻿@model CategoriesAddViewModel
+@{
+    Model.Title = "Categories";
+    Model.ActiveSubnav = "categories";
+}
+<style>
+    label
+    {
+        display: block;
+    }
+    label span
+    {
+        color: #666;
+    }
+</style>
+<h1>
+    Create a category</h1>
+<form method="post" action="">
+<fieldset>
+    <ul>
+        <li>
+            <label>
+                Name as it will apear on pages
+            </label>
+            @Html.TextBoxFor(m => m.AddForm.Name)
+        </li>
+        <li>
+            <label>
+                Category description, it will appear on category pages (optional)
+            </label>
+            @Html.TextAreaFor(m => m.AddForm.Description)
+        </li>
+        <li>
+            <label>
+                Parent category (optional), if not specified then it will become a root category.
+                <br />
+                You can later rearrange categories
+            </label>
+            <select>
+            </select>
+        </li>
+    </ul>
+    <input type="submit" value="Create a new category" />
+    or <a href="@Url.Action(string.Empty)">Cancel</a>
+</fieldset>
+</form>
