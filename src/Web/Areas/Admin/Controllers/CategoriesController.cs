@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
@@ -26,6 +27,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Add([Bind(Include = "AddForm")] CategoriesAddViewModel model)
         {
+            Thread.Sleep(1000);
             model.AddForm.Name += "1";
 
             ModelState.Clear();

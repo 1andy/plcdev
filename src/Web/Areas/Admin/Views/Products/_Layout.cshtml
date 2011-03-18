@@ -5,17 +5,17 @@
 }
 @section subnav{
     <div@(Model.ActiveSubnav == "add" ? " class=active" : string.Empty)>
-        @Html.ActionLink("Add new product", "Add")
+        @Html.ActionLink("Add new product", "Add", "Products")
     </div>
     <span class="delim">|</span>
-    <form@(Model.ActiveSubnav == "index" ? " class=active" : string.Empty) action="@Url.Action("Index")">
+    <form@(Model.ActiveSubnav == "index" ? " class=active" : string.Empty) action="@Url.Action("Index", "Products")">
     <span class="text">Search for</span>
     @Html.TextBox("q")
     <input type="submit" value="Search" />
     </form>
     <span class="delim">|</span>
     <div@(Model.ActiveSubnav == "search" ? " class=active" : string.Empty)>
-        @Html.ActionLink("Advanced search", "Search")
+        @Html.ActionLink("Advanced search", "Search", "Products")
     </div>
     <span class="delim">|</span>
     <div@(Model.ActiveSubnav == "categories" ? " class=active" : string.Empty)>

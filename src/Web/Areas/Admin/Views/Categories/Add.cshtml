@@ -12,10 +12,14 @@
     {
         color: #666;
     }
+    form
+    {
+        padding-left: 20px;
+    }
 </style>
+<form method="post" action="" onsubmit="$(this).find('input:submit')[0].disabled=true; $('.throbber').show()">
 <h1>
     Create a category</h1>
-<form method="post" action="">
 <fieldset>
     <ul>
         <li>
@@ -37,10 +41,27 @@
                 You can later rearrange categories
             </label>
             <select>
+                <option>There should be upload image thing on the right</option>
             </select>
         </li>
     </ul>
-    <input type="submit" value="Create a new category" />
-    or <a href="@Url.Action(string.Empty)">Cancel</a>
+    <br />
+    <div class="submit">
+        <span class="throbber" style="display: none; position: absolute; left: -22px; top: 6px">
+        </span>
+        <input type="submit" value="Create a new category" style="font-weight: bold; font-size: 16px;
+            outline-style: none" />
+        <script>
+            var throbberPosition = 0;
+            function startThrobber() {
+                throbberPosition -= 16;
+                $(".throbber").css("background-position", throbberPosition + "px 0")
+            }
+            window.setInterval(startThrobber, 30);
+            
+        </script>
+        @*<img src="@Url.Content("~/Areas/Admin/Content/img/throbber.gif")" />*@ <span style="color: #999">
+            or</span> <a href="@Url.Action(string.Empty)" style=color:#d00>Cancel</a>
+    </div>
 </fieldset>
 </form>
