@@ -12,22 +12,22 @@ namespace PlexCommerce.Web.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            //var route = new LowercaseRoute("Admin/{controller}/{action}/{id}",
-            //                               new RouteValueDictionary(new { controller = "Home", action = "Index", id = UrlParameter.Optional }),
-            //                               null,
-            //                               new RouteValueDictionary(new
-            //                               {
-            //                                   Namespaces = new[] { "PlexCommerce.Web.Areas.Admin.*" },
-            //                                   area = "Admin",
-            //                                   UseNamespaceFallback = false
-            //                               }),
-            //                               new MvcRouteHandler());
+            ////            var route = new LowercaseRoute("Admin/{controller}/{action}/{id}",
+            //                                           new RouteValueDictionary(new { controller = "Home", action = "Index", id = UrlParameter.Optional }),
+            //                                           null,
+            //                                           new RouteValueDictionary(new
+            //                                           {
+            //                                               Namespaces = new[] { "PlexCommerce.Web.Areas.Admin.*" },
+            //                                               area = "Admin",
+            //                                               UseNamespaceFallback = false
+            //                                           }),
+            //                                           new MvcRouteHandler());
+            ////            context.Routes.Add("Admin_default", route);
 
-            //context.Routes.Add("Admin_default", route);
-
-            context.MapLowercaseRoute("Admin_default",
-                             "Admin/{controller}/{action}/{id}",
-                             new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+            context.MapLowercaseRoute(
+                "Admin_default",
+                "Admin/{controller}/{action}/{id}",
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional });
         }
     }
 }

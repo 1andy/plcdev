@@ -17,14 +17,21 @@ namespace PlexCommerce.Web
         {
         }
 
-        public LowercaseRoute(string url, RouteValueDictionary defaults, RouteValueDictionary constraints,
-                              IRouteHandler routeHandler)
+        public LowercaseRoute(
+            string url,
+            RouteValueDictionary defaults,
+            RouteValueDictionary constraints,
+            IRouteHandler routeHandler)
             : base(url, defaults, constraints, routeHandler)
         {
         }
 
-        public LowercaseRoute(string url, RouteValueDictionary defaults, RouteValueDictionary constraints,
-                              RouteValueDictionary dataTokens, IRouteHandler routeHandler)
+        public LowercaseRoute(
+            string url,
+            RouteValueDictionary defaults,
+            RouteValueDictionary constraints,
+            RouteValueDictionary dataTokens,
+            IRouteHandler routeHandler)
             : base(url, defaults, constraints, dataTokens, routeHandler)
         {
         }

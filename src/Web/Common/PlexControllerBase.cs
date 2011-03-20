@@ -20,6 +20,7 @@ namespace PlexCommerce.Web
             {
                 SetAdditionalViewModelData(viewResult.ViewData.Model);
             }
+
             base.OnResultExecuting(filterContext);
         }
     }

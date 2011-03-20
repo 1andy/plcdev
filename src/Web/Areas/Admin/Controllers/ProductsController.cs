@@ -10,7 +10,6 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
     [ValidateInput(false)]
     public class ProductsController : AdminControllerBase
     {
-
         public ActionResult Index(string q)
         {
             var model = new ProductIndexViewModel();
@@ -39,11 +38,11 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
             return View(model);
         }
 
-        //protected override void SetAdditionalViewModelData(object modelObject)
-        //{
-        //    var model = (SharedLayoutViewModel)modelObject;
-        //    model.ActiveTab = "products";
-        //    base.SetAdditionalViewModelData(model);
-        //}
+        ////protected override void SetAdditionalViewModelData(object modelObject)
+        ////{
+        ////    var model = (SharedLayoutViewModel)modelObject;
+        ////    model.ActiveTab = "products";
+        ////    base.SetAdditionalViewModelData(model);
+        ////}
     }
 }

@@ -16,6 +16,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
                 sharedLayoutViewModel.UserName = "1andy";
                 sharedLayoutViewModel.StoreName = "Jama Stuff";
             }
+
             base.SetAdditionalViewModelData(model);
         }
     }

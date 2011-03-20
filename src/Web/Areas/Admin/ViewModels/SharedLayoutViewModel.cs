@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Collections.Generic;
 
 namespace PlexCommerce.Web.Areas.Admin
 {
     public class SharedLayoutViewModel
     {
         public string UserName { get; set; }
+
         public string StoreName { get; set; }
 
         #region Model properties allowed to be modified in views
 
         public string Title { get; set; }
+
         public string ActiveTab { get; set; }
+
         public string ActiveSubnav { get; set; }
 
         #endregion
@@ -22,7 +21,6 @@ namespace PlexCommerce.Web.Areas.Admin
 
     public class CategoriesIndexViewModel : SharedLayoutViewModel
     {
-
     }
 
     public class CategoriesAddViewModel : SharedLayoutViewModel
@@ -33,22 +31,20 @@ namespace PlexCommerce.Web.Areas.Admin
     public class CategoriesAddForm
     {
         public string Name { get; set; }
+
         public string Description { get; set; }
     }
 
     public class ProductIndexViewModel : SharedLayoutViewModel
     {
-
     }
 
     public class ProductAddViewModel : SharedLayoutViewModel
     {
-
     }
 
     public class ProductSearchViewModel : SharedLayoutViewModel
     {
-
     }
 
     public class ProductCategoriesViewModel : SharedLayoutViewModel
@@ -59,6 +55,7 @@ namespace PlexCommerce.Web.Areas.Admin
     public class ProductCategoryData
     {
         public int CategoryID { get; set; }
+
         public string Name { get; set; }
     }
 }
