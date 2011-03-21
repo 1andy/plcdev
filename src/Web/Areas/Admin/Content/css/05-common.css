@@ -2,6 +2,12 @@
 {
     background: #edf2e4;
     font-size: 13px;
+    overflow-y: scroll;
+}
+
+*
+{
+    font-family: "Segoe UI" , Arial, sans-serif;
 }
 
 h1

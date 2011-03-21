@@ -1,10 +1,13 @@
 ﻿using System;
+using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
+using NHibernate.Cfg;
+using NHibernate.Tool.hbm2ddl;
 using StructureMap;
 
 namespace PlexCommerce.Web
@@ -56,6 +59,7 @@ namespace PlexCommerce.Web
             // function to create NHibernate's session factory
             Func<ISessionFactory> createSessionFactory = () => Fluently.Configure().Database(databaseConfiguration)
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Product>())
+                .ExposeConfiguration(SaveSchemaToFile)
                 .BuildSessionFactory();
 
             // initialize IoC support for NHibernate's ISessionFactory and ISession
@@ -68,6 +72,18 @@ namespace PlexCommerce.Web
                     // ISession has scope of HTTP request
                     x.For<ISession>().HttpContextScoped().Use(context => context.GetInstance<ISessionFactory>().OpenSession());
                 });
+        }
+
+        private static void SaveSchemaToFile(Configuration config)
+        {
+            var schema = new SchemaExport(config);
+
+            // set output file
+            string schemaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\Schema.sql");
+            schema.SetOutputFile(schemaPath);
+
+            // write schema.sql and drop and recreate tables if schema file is missing
+            schema.Create(true, !File.Exists(schemaPath));
         }
     }
 }

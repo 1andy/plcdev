@@ -51,20 +51,5 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 
             return View(model);
         }
-
-        ////                private static void BuildSchema(Configuration config)
-        //                {
-        //                    //// delete the existing db on each run
-        //        if (File.Exists(DbFile))
-        //            File.Delete(DbFile);
-        //        
-        //         this NHibernate tool takes a configuration (with mapping info in)
-        //         and exports a database schema from it
-        //                    var schema = new SchemaExport(config);
-        //        
-        //                    schema.SetOutputFile(@"d:\schema.txt").Create(true, true);
-        //        
-        //        schema.Create(false, true);
-        //                }
     }
 }

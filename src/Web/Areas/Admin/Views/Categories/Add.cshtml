@@ -14,10 +14,10 @@
     }
     form
     {
-       
     }
 </style>
-<form method="post" action="" onsubmit="$(this).find('input:submit')[0].disabled=true; $('.throbber').show()" style=" padding-left: 20px;">
+<form method="post" action="" onsubmit="$(this).find('input:submit')[0].disabled=true; $('.throbber').show()"
+style="padding-left: 20px;">
 <h1>
     Create a category</h1>
 @Html.ValidationSummary()
@@ -59,7 +59,6 @@
                 $(".throbber").css("background-position", throbberPosition + "px 0")
             }
             window.setInterval(startThrobber, 30);
-            
         </script>
         @*<img src="@Url.Content("~/Areas/Admin/Content/img/throbber.gif")" />*@ <span style="color: #999">
             or</span> <a href="@Url.Action(string.Empty)" style=color:#d00>Cancel</a>
