@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="Mappings\CategoryMap.cs" />
+    <Compile Include="Mappings\ProductMap.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
