@@ -106,11 +106,12 @@ namespace PlexCommerce.Web
         [Conditional("DEBUG")]
         private static void RedirectConsoleOutputToFile()
         {
-            const string logFile = @"d:\pc.log";
+            const string LogFile = @"d:\pc.log";
 
-            if (File.Exists(logFile))
+            // we log into this file only if it exists
+            if (File.Exists(LogFile))
             {
-                var consoleOutWriter = new StreamWriter(logFile, true) { AutoFlush = true };
+                var consoleOutWriter = new StreamWriter(LogFile, true) { AutoFlush = true };
                 Console.SetOut(consoleOutWriter);
             }
         }
