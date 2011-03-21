@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\_lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core">
       <HintPath>..\_lib\Castle.Core.dll</HintPath>
     </Reference>
@@ -48,6 +51,9 @@
     </Reference>
     <Reference Include="NHibernate.ByteCode.Castle">
       <HintPath>..\_lib\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq">
+      <HintPath>..\_lib\Remotion.Data.Linq.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\_lib\StructureMap.dll</HintPath>
@@ -92,10 +98,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Database1.mdf" />
-    <Content Include="App_Data\Database1_log.ldf">
-      <DependentUpon>Database1.mdf</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Content\css\01-reset.css" />
     <Content Include="Areas\Admin\Content\css\02-tools.css" />
     <Content Include="Areas\Admin\Content\css\05-common.css" />

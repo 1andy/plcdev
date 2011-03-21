@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
@@ -12,8 +13,6 @@ using StructureMap;
 
 namespace PlexCommerce.Web
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
     public class MvcApplication : HttpApplication
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -34,6 +33,9 @@ namespace PlexCommerce.Web
 
         protected void Application_Start()
         {
+            // we need this for NHibernate to write its logs
+            RedirectConsoleOutputToFile();
+
             InitializeNHibernate();
 
             // set factory for controllers that supports IoC
@@ -45,15 +47,26 @@ namespace PlexCommerce.Web
             RegisterRoutes(RouteTable.Routes);
         }
 
+        protected void Application_End()
+        {
+            CleanupConsoleOurputRedirect();
+        }
+
+        protected void Application_BeginRequest()
+        {
+        }
+
         protected void Application_EndRequest()
         {
             // dispose NHibernate session if created during this request
             ObjectFactory.ReleaseAndDisposeAllHttpScopedObjects();
         }
 
+        #region NHibernate Initialization
+
         private static void InitializeNHibernate()
         {
-            var databaseConfiguration = MsSqlConfiguration.MsSql2008.ConnectionString(
+            var databaseConfiguration = MsSqlConfiguration.MsSql2008.ShowSql().ConnectionString(
                 c => c.FromConnectionStringWithKey("PlexCommerceConnection"));
 
             // function to create NHibernate's session factory
@@ -85,5 +98,32 @@ namespace PlexCommerce.Web
             // write schema.sql and drop and recreate tables if schema file is missing
             schema.Create(true, !File.Exists(schemaPath));
         }
+
+        #endregion
+
+        #region Console Out Redirect (primarily for NHibernate)
+
+        [Conditional("DEBUG")]
+        private static void RedirectConsoleOutputToFile()
+        {
+            const string logFile = @"d:\pc.log";
+
+            if (File.Exists(logFile))
+            {
+                var consoleOutWriter = new StreamWriter(logFile, true) { AutoFlush = true };
+                Console.SetOut(consoleOutWriter);
+            }
+        }
+
+        [Conditional("DEBUG")]
+        private static void CleanupConsoleOurputRedirect()
+        {
+            if (Console.Out != null)
+            {
+                Console.Out.Dispose();
+            }
+        }
+
+        #endregion
     }
 }

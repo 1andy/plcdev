@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace PlexCommerce.Web.Areas.Admin
 {
@@ -27,6 +28,8 @@ namespace PlexCommerce.Web.Areas.Admin
     public class CategoriesAddViewModel : SharedLayoutViewModel
     {
         public CategoriesAddForm AddForm { get; set; }
+
+        public List<SelectListItem> ParentCategoryIDSelectList { get; set; }
     }
 
     public class CategoriesAddForm
@@ -35,6 +38,8 @@ namespace PlexCommerce.Web.Areas.Admin
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public int? ParentCategoryID { get; set; }
     }
 
     public class ProductIndexViewModel : SharedLayoutViewModel
