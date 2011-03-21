@@ -31,7 +31,10 @@ namespace PlexCommerce.Web
 
         protected void Application_Start()
         {
-            InitializeDependencyInjection();
+            InitializeNHibernate();
+
+            // set factory for controllers that supports IoC
+            ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
 
             AreaRegistration.RegisterAllAreas();
 
@@ -45,11 +48,8 @@ namespace PlexCommerce.Web
             ObjectFactory.ReleaseAndDisposeAllHttpScopedObjects();
         }
 
-        private static void InitializeDependencyInjection()
+        private static void InitializeNHibernate()
         {
-            // set factory for controllers that supports IoC
-            ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
-
             var databaseConfiguration = MsSqlConfiguration.MsSql2008.ConnectionString(
                 c => c.FromConnectionStringWithKey("PlexCommerceConnection"));
 

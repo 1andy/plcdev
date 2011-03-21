@@ -9,6 +9,7 @@
     <link href="@Url.Content("~/areas/admin/content/css/01-reset.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/areas/admin/content/css/02-tools.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/areas/admin/content/css/05-common.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/areas/admin/content/css/07-forms.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/areas/admin/content/css/10-layout.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/areas/admin/scripts/01-jquery-1.5.1.min.js")"></script>
     <script src="@Url.Content("~/areas/admin/scripts/10-common.js")"></script>
@@ -37,6 +38,14 @@
             <div id="subnav">
                 @RenderSection("subnav", false)
             </div>
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="success-message">
+                    <span>
+                        @TempData["SuccessMessage"]
+                    </span>
+                </div>
+            }
             @RenderBody()
         </div>
         <div id="footer">

@@ -10,6 +10,11 @@ namespace PlexCommerce.Web
         public override IController CreateController(RequestContext requestContext, string controllerName)
         {
             var controllerType = GetControllerType(requestContext, controllerName);
+            if (controllerType == null)
+            {
+                return base.CreateController(requestContext, controllerName);
+            }
+
             return ObjectFactory.GetInstance(controllerType) as IController;
         }
     }

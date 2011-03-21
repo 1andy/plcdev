@@ -97,6 +97,7 @@
     <Content Include="Areas\Admin\Content\css\02-tools.css" />
     <Content Include="Areas\Admin\Content\css\05-common.css" />
     <Content Include="Areas\Admin\Content\css\10-layout.css" />
+    <Content Include="Areas\Admin\Content\css\07-forms.css" />
     <Content Include="Areas\Admin\Content\css\img\active-tab.png" />
     <Content Include="Areas\Admin\Content\css\img\top.png" />
     <Content Include="Areas\Admin\Content\img\home-active.png" />

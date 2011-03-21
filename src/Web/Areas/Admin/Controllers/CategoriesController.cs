@@ -43,13 +43,11 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                var category = new Category { Name = form.Name, Description = form.Description };
+                var category = new Category { Name = form.Name, Description = form.Description ?? string.Empty };
                 _session.Save(category);
                 TempData["SuccessMessage"] = "Category has been created";
+                return RedirectToAction("Index");
             }
-
-            model.AddForm.Name += "1";
-            ModelState.Clear();
 
             return View(model);
         }

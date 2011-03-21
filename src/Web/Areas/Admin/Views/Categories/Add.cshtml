@@ -14,12 +14,13 @@
     }
     form
     {
-        padding-left: 20px;
+       
     }
 </style>
-<form method="post" action="" onsubmit="$(this).find('input:submit')[0].disabled=true; $('.throbber').show()">
+<form method="post" action="" onsubmit="$(this).find('input:submit')[0].disabled=true; $('.throbber').show()" style=" padding-left: 20px;">
 <h1>
     Create a category</h1>
+@Html.ValidationSummary()
 <fieldset>
     <ul>
         <li>

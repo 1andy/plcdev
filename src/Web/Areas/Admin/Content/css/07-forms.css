@@ -1,0 +1,45 @@
+﻿/*input[type=text], input[type=search], input[type=password], select, textarea
+{
+    border: solid 1px #aaa;
+}
+input[type=text], input[type=search], input[type=password]
+{
+    padding: 2px 1px;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=search]:focus, select:focus, textarea:focus
+{
+    border-color: #888;
+    -moz-box-shadow: 0 0 4px #aaa;
+    box-shadow: 0 0 4px #aaa;
+}*/
+
+.input-validation-error
+{
+    border-style: solid;
+    border-color: #e11;
+    background: #fee;
+}
+
+.validation-summary-errors
+{
+    border: solid 1px #e11;
+    background: #fee;
+    color: #e00;
+}
+
+.success-message
+{
+    text-align:center;
+}
+.success-message span
+{
+    font-size: 14px;
+    line-height: 2em;
+    background: #f6ef7b;
+    padding: 0 10px 1px;
+    min-width: 480px;
+    display: inline-block;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
