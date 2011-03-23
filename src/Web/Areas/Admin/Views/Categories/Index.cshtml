@@ -3,7 +3,38 @@
     Model.Title = "Categories";
     Model.ActiveSubnav = "categories";
 }
+@section head {
+    <style>
+        li ul.cats
+        {
+            margin-left: 20px;
+        }
+    </style>
+}
+@helper RenderCategories(IList<Category> categories)
+    {
+    <ul class="cats">
+        @foreach (var c in categories)
+        {
+            <li>
+                <table>
+                    <tr>
+                        <td>
+                            @c.Name
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = c.Id })
+                            @Html.ActionLink("Delete", "Delete", new { id = c.Id }, new { @class = "confirm-post-link" })
+                        </td>
+                    </tr>
+                </table>
+                @RenderCategories(c.ChildCategories)
+            </li>
+        }
+    </ul>
+    
+}
 <div>
     <a href="@Url.Action("Add")">Add new category</a>
 </div>
-A grid sortable (movable up and down)
+@RenderCategories(Model.Categories)

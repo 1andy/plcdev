@@ -27,6 +27,9 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var model = new CategoriesIndexViewModel();
+
+            model.Categories = _session.Query<Category>().Where(c => c.ParentCategory == null).ToList();
+
             return View(model);
         }
 
@@ -60,6 +63,17 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 
             SetupCategoriesAddViewModel(model);
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var category = _session.Get<Category>(id);
+            _session.Delete(category);
+            _session.Flush();
+
+            TempData["SuccessMessage"] = "The category has been deleted";
+            return RedirectToAction("Index");
         }
 
         private void SetupCategoriesAddViewModel(CategoriesAddViewModel model)
