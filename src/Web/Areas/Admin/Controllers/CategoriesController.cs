@@ -65,6 +65,13 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var category = _session.Get<Category>(id);
+            return Content("test");
+        }
+
         [HttpPost]
         public ActionResult Delete(int id)
         {

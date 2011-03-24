@@ -10,6 +10,8 @@ namespace PlexCommerce.Mappings
             Map(x => x.Name).Not.Nullable();
 
             HasManyToMany(x => x.Categories).Cascade.All().Inverse().ParentKeyColumn("ProductID").ChildKeyColumn("CategoryID");
+            HasMany(x => x.Variants).KeyColumn("ProductID").Inverse();
+            HasMany(x => x.VariantOptions).KeyColumn("ProductID").Inverse();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 
         public ActionResult Add()
         {
-            var model = new ProductAddViewModel();
+            var model = new ProductsAddViewModel();
 
             return View(model);
         }

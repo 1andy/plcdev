@@ -47,8 +47,17 @@ namespace PlexCommerce.Web.Areas.Admin
     {
     }
 
-    public class ProductAddViewModel : SharedLayoutViewModel
+    public class ProductsAddViewModel : SharedLayoutViewModel
     {
+        public ProductsAddForm AddForm { get; set; }
+    }
+
+    public class ProductsAddForm
+    {
+        [Required]
+        public string Name { get; set; }
+
+        public string Description { get; set; }
     }
 
     public class ProductSearchViewModel : SharedLayoutViewModel

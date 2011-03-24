@@ -1,7 +1,81 @@
-﻿@model ProductAddViewModel
+﻿@model ProductsAddViewModel
 @{
     Model.Title = "New Product";
     Model.ActiveSubnav = "add";
 }
 <h2>
     Add new product</h2>
+@Html.ValidationSummary()
+<form method="post" action="">
+@Html.AntiForgeryToken()
+<fieldset>
+    <ul>
+        <li>
+            <label>
+                Name as it will apear on pages
+            </label>
+            @Html.TextBoxFor(m => m.AddForm.Name)
+        </li>
+        <li>
+            <label>
+                Description
+            </label>
+            @Html.TextAreaFor(m => m.AddForm.Description)
+        </li>
+        <li>
+            <label>
+                Vendor
+            </label>
+        </li>
+    </ul>
+    Properties (for variant 1)
+    <ul>
+        <li>
+            <label>
+                SKU
+            </label>
+        </li>
+        <li>
+            <label>
+                Track stock level
+            </label>
+        </li>
+        <li>
+            <label>
+                Price + original price
+            </label>
+            Price input </li>
+        <li>
+            <label>
+                Charge taxes</label>
+            Checkbox </li>
+    </ul>
+    Product Options (allow customers to select between variations of this product)
+    <br />
+    <input type="checkbox" />
+    This product has multiple variants having one or more options that distinguish them
+    <ul>
+        <li>
+            <select>
+                <option>Title</option>
+                <option>Color</option>
+                <option>Size</option>
+                <option>Custom...</option>
+            </select>
+            Default value </li>
+    </ul>
+    Categories
+    <ul>
+        <li></li>
+    </ul>
+    <div class="submit">
+        <input type="submit" value="Create a new product" />
+        or
+        @Html.ActionLink("Cancel", "Index")
+    </div>
+</fieldset>
+<p>
+    asda</p>
+<p>
+    asds</p>
+</form>
