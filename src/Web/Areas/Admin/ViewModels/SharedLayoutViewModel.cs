@@ -45,6 +45,7 @@ namespace PlexCommerce.Web.Areas.Admin
 
     public class ProductIndexViewModel : SharedLayoutViewModel
     {
+
     }
 
     public class ProductsAddViewModel : SharedLayoutViewModel
@@ -58,6 +59,16 @@ namespace PlexCommerce.Web.Areas.Admin
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public string Sku { get; set; }
+
+        public List<ProductOptionName> Options { get; set; }
+    }
+
+    public class ProductOptionName
+    {
+        public string Name { get; set; }
+        public string Value { get; set; }
     }
 
     public class ProductSearchViewModel : SharedLayoutViewModel

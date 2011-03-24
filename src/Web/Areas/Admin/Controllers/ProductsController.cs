@@ -17,9 +17,30 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult Add()
         {
             var model = new ProductsAddViewModel();
+
+            model.AddForm = new ProductsAddForm
+                            {
+                                Options = new List<ProductOptionName>()
+                            };
+
+            model.AddForm.Options.Add(new ProductOptionName() { Name = "Title" });
+            model.AddForm.Options.Add(new ProductOptionName() { Name = "Color" });
+            model.AddForm.Options.Add(new ProductOptionName() { Name = "Size" });
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Add([Bind(Prefix = "AddForm")] ProductsAddForm form)
+        {
+            var model = new ProductsAddViewModel();
+
+            model.AddForm = form;
 
             return View(model);
         }
