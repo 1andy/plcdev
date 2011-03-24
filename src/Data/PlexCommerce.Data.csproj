@@ -50,10 +50,13 @@
     <Compile Include="Category.cs" />
     <Compile Include="Mappings\CategoryMap.cs" />
     <Compile Include="Mappings\ProductMap.cs" />
+    <Compile Include="Mappings\ProductVariantOptionValueMap.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductVariant.cs" />
     <Compile Include="Mappings\ProductVariantMap.cs" />
     <Compile Include="Mappings\ProductVariantOptionMap.cs" />
+    <Compile Include="ProductVariantOption.cs" />
+    <Compile Include="ProductVariantOptionValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
