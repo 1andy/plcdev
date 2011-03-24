@@ -37,7 +37,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
         public ActionResult Add()
         {
             var model = new CategoriesAddViewModel();
-            SetupCategoriesAddViewModel(model);
+            SetupAddViewModel(model);
 
             return View(model);
         }
@@ -61,7 +61,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            SetupCategoriesAddViewModel(model);
+            SetupAddViewModel(model);
             return View(model);
         }
 
@@ -83,11 +83,11 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        private void SetupCategoriesAddViewModel(CategoriesAddViewModel model)
+        private void SetupAddViewModel(CategoriesAddViewModel model)
         {
-            model.ParentCategoryIDSelectList = new List<SelectListItem> { new SelectListItem() };
+            model.ParentCategoryIDListItems = new List<SelectListItem> { new SelectListItem() };
 
-            model.ParentCategoryIDSelectList.AddRange(
+            model.ParentCategoryIDListItems.AddRange(
                 from c in _session.Query<Category>()
                 select new SelectListItem
                        {

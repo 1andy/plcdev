@@ -30,7 +30,7 @@ namespace PlexCommerce.Web.Areas.Admin
     {
         public CategoriesAddForm AddForm { get; set; }
 
-        public List<SelectListItem> ParentCategoryIDSelectList { get; set; }
+        public List<SelectListItem> ParentCategoryIDListItems { get; set; }
     }
 
     public class CategoriesAddForm
@@ -50,6 +50,8 @@ namespace PlexCommerce.Web.Areas.Admin
 
     public class ProductsAddViewModel : SharedLayoutViewModel
     {
+        public IEnumerable<SelectListItem> DefaultOptionNameListItems { get; set; }
+
         public ProductsAddForm AddForm { get; set; }
     }
 
@@ -62,13 +64,14 @@ namespace PlexCommerce.Web.Areas.Admin
 
         public string Sku { get; set; }
 
-        public List<ProductOptionName> Options { get; set; }
+        public IList<ProductOptionName> Options { get; set; }
     }
 
     public class ProductOptionName
     {
         public string Name { get; set; }
         public string Value { get; set; }
+        public bool Disabled { get; set; }
     }
 
     public class ProductSearchViewModel : SharedLayoutViewModel

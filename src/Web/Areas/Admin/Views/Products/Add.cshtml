@@ -54,21 +54,19 @@
     Product Options (allow customers to select between variations of this product)
     <br />
     <input type="checkbox" />
-    This product has multiple variants having one or more options that distinguish them
+    This product has multiple variants that have one or more options that distinguish
+    them
     <ul>
-        <li>
-            @for (int i = 0; i < Model.AddForm.Options.Count; i++)
-            {
-                @Html.TextBoxFor(m => m.AddForm.Options[i].Name);
-                //@Html.TextBox(string.Format("AddForm.Options[{0}].Name", i), Model.AddForm.Options[i].Name)
-            }
-            <select>
-                <option>Title</option>
-                <option>Color</option>
-                <option>Size</option>
-                <option>Custom...</option>
-            </select>
-            Default value </li>
+        @for (int i = 0; i < Model.AddForm.Options.Count; i++)
+        {
+            var inputAttribute = Model.AddForm.Options[i].Disabled ? new { disabled = "disabled" } : null;
+            <li>
+                @Html.DropDownListFor(m => m.AddForm.Options[i].Name, Model.DefaultOptionNameListItems, inputAttribute)
+                @Html.TextBoxFor(m => m.AddForm.Options[i].Value, inputAttribute)
+
+                @Model.AddForm.Options[i].Name
+            </li>
+        }
     </ul>
     Categories
     <ul>

@@ -17,21 +17,16 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
             return View(model);
         }
 
+        #region Add
+
         [HttpGet]
         public ActionResult Add()
         {
             var model = new ProductsAddViewModel();
 
-            model.AddForm = new ProductsAddForm
-                            {
-                                Options = new List<ProductOptionName>()
-                            };
+            model.AddForm = new ProductsAddForm();
 
-            model.AddForm.Options.Add(new ProductOptionName() { Name = "Title" });
-            model.AddForm.Options.Add(new ProductOptionName() { Name = "Color" });
-            model.AddForm.Options.Add(new ProductOptionName() { Name = "Size" });
-
-
+            SetupAddViewModel(model);
             return View(model);
         }
 
@@ -42,8 +37,48 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 
             model.AddForm = form;
 
+            SetupAddViewModel(model);
             return View(model);
         }
+
+        private void SetupAddViewModel(ProductsAddViewModel model)
+        {
+            var defaultItems = new[] { "Title", "Color", "Size" };
+
+            model.DefaultOptionNameListItems = (from it in defaultItems
+                                                select new SelectListItem
+                                                       {
+                                                           Value = it,
+                                                           Text = it
+                                                       }).ToList();
+
+            // make sure AddForm.Options contains 3 rows, if not, append
+            // by default thouse will be rendered disabled
+
+            if (model.AddForm.Options == null)
+            {
+                model.AddForm.Options = new List<ProductOptionName>();
+            }
+
+            var options = model.AddForm.Options;
+
+            if (options.Count < 1)
+            {
+                options.Add(new ProductOptionName { Name = "Title", Disabled = true });
+            }
+
+            if (options.Count < 2)
+            {
+                options.Add(new ProductOptionName { Name = "Color", Disabled = true });
+            }
+
+            if (options.Count < 3)
+            {
+                options.Add(new ProductOptionName { Name = "Size", Disabled = true });
+            }
+        }
+
+        #endregion
 
         public ActionResult Search()
         {
