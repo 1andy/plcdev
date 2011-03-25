@@ -91,11 +91,11 @@
     <Compile Include="Areas\Admin\ViewModels\Categories\CategoriesAddViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Categories\CategoriesIndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Products\ProductsIndexViewModel.cs" />
-    <Compile Include="Areas\Admin\ViewModels\Products\ProductsOptionName.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Products\ProductOptionData.cs" />
     <Compile Include="Areas\Admin\ViewModels\Products\ProductsAddForm.cs" />
     <Compile Include="Areas\Admin\ViewModels\Products\ProductsAddViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Products\ProductsSearchViewModel.cs" />
-    <Compile Include="Areas\Admin\ViewModels\Products\ProductViewViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Products\ProductsViewViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\SharedLayoutViewModel.cs" />
     <Compile Include="Common\PlexControllerBase.cs" />
     <Compile Include="Global.asax.cs">

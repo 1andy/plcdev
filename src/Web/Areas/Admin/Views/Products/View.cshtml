@@ -1,8 +1,7 @@
 ﻿@model ProductsViewViewModel
 @{
-    //Model.ActiveSubnav = "add";
+        //Model.ActiveSubnav = "add";
 }
-<h2>
-    Add new product</h2>
-@Html.ValidationSummary()
-
+<h1>
+    @Model.Name</h1>
+@Html.DropDownList("aa", Model.CategoriesListItems)

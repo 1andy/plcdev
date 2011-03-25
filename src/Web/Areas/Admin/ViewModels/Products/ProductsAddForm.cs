@@ -15,6 +15,6 @@ namespace PlexCommerce.Web.Areas.Admin
 
         public string Sku { get; set; }
 
-        public IList<ProductsOptionName> Options { get; set; }
+        public IList<ProductOptionData> Options { get; set; }
     }
 }

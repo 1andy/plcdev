@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.WebPages;
 using NHibernate;
+using NHibernate.Criterion;
+using NHibernate.Linq;
 
 namespace PlexCommerce.Web.Areas.Admin.Controllers
 {
@@ -83,7 +85,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 
             if (model.AddForm.Options == null)
             {
-                model.AddForm.Options = new List<ProductsOptionName>();
+                model.AddForm.Options = new List<ProductOptionData>();
             }
 
             var options = model.AddForm.Options;
@@ -91,17 +93,17 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
             // make sure we have 3 options
             if (options.Count < 1)
             {
-                options.Add(new ProductsOptionName { Disabled = true });
+                options.Add(new ProductOptionData { Disabled = true });
             }
 
             if (options.Count < 2)
             {
-                options.Add(new ProductsOptionName { Disabled = true });
+                options.Add(new ProductOptionData { Disabled = true });
             }
 
             if (options.Count < 3)
             {
-                options.Add(new ProductsOptionName { Disabled = true });
+                options.Add(new ProductOptionData { Disabled = true });
             }
         }
 
@@ -111,10 +113,62 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 
         public ActionResult View(int id)
         {
-            var model = new ProductViewViewModel();
+            var product = _session.Get<Product>(id);
+
+            var model = new ProductsViewViewModel
+                        {
+                            Name = product.Name
+                        };
+
+            //var cats = _session.CreateCriteria(typeof(Category))
+            //    .Add(Restrictions.IsNull("ParentCategory"))
+            //    .SetFetchMode("ChildCategories", FetchMode.Eager)
+            //    .SetFetchMode("ChildCategories.ChildCategories", FetchMode.Eager)
+            //    .SetFetchMode("ChildCategories.ChildCategories.ChildCategories", FetchMode.Eager)
+            //    .List<Category>();
+
+            //ExploreCats(cats);
+
+            var rootCategories = _session.Query<Category>().Where(c => c.ParentCategory == null)
+                .FetchMany(c => c.ChildCategories).ThenFetchMany(c => c.ChildCategories).ThenFetchMany(c => c.ChildCategories);
+
+            model.CategoriesListItems = CreateListItemsFromCategories(rootCategories);
+
+            //ExploreCats(cats2);
+
+            //var categories = _session.QueryOver<Category>().Where(c => c.ParentCategory == null);
+
+            //categories.ToList();)
 
             return View(model);
         }
+
+        private static IEnumerable<SelectListItem> CreateListItemsFromCategories(IEnumerable<Category> categories, int level = 0)
+        {
+            string prefix = string.Empty.PadRight(level * 4,'.');
+            var items = new List<SelectListItem>();
+
+            foreach (var category in categories)
+            {
+                var item = new SelectListItem
+                           {
+                               Value = category.Id.ToString(),
+                               Text = prefix + category.Name
+                           };
+                items.Add(item);
+                items.AddRange(CreateListItemsFromCategories(category.ChildCategories, level + 1));
+            }
+
+            return items;
+        }
+
+        //private void ExploreCats(IEnumerable<Category> cats)
+        //{
+        //    foreach (var c in cats)
+        //    {
+        //        ExploreCats(c.ChildCategories);
+        //    }
+        //}
 
         #endregion
 

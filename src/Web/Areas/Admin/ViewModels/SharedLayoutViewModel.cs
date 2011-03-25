@@ -8,7 +8,7 @@
 
         #region Model properties allowed to be modified in views
 
-        public string Title { get; set; }
+        public string PageTitle { get; set; }
 
         public string ActiveTab { get; set; }
 

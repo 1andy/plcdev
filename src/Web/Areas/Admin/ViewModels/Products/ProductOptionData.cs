@@ -1,6 +1,6 @@
 ﻿namespace PlexCommerce.Web.Areas.Admin
 {
-    public class ProductsOptionName
+    public class ProductOptionData
     {
         public string Name { get; set; }
 
