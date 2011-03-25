@@ -61,7 +61,7 @@ alter table [ProductVariantOptionValue]  drop constraint FK6DAFBC52BFB63F8D
 
     create table [ProductVariant] (
         ProductVariantID INT IDENTITY NOT NULL,
-       Price money not null,
+       Price MONEY not null,
        Sku NVARCHAR(255) not null,
        ProductID INT not null,
        primary key (ProductVariantID)

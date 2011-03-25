@@ -18,36 +18,12 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
             _session = session;
         }
 
-
         public ActionResult Index(string q)
         {
-            var model = new ProductIndexViewModel();
+            var model = new ProductsIndexViewModel();
 
             return View(model);
         }
-
-        //        public ActionResult Test()
-        //        {
-        //var model = new OptionsViewModel();
-
-        //// for DropDownListFor
-        //model.AgentTypeListItems = new[]
-        //{
-        //    new SelectListItem { Text = "1", Value = "1" }, 
-        //    new SelectListItem { Text = "2", Value = "2" },
-        //    new SelectListItem { Text = "3", Value = "3" },
-        //};
-
-        //// 1 dropdown in the model
-        //model.AgentType = "2";
-
-        //// 3 dropdowns in array (setting AgentType does not affect)
-        //model.AgentTypes = new[] { "3", "2", "1" };
-
-        //return View(model);
-        //        }
-
-
 
         #region Add
 
@@ -107,7 +83,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 
             if (model.AddForm.Options == null)
             {
-                model.AddForm.Options = new List<ProductOptionName>();
+                model.AddForm.Options = new List<ProductsOptionName>();
             }
 
             var options = model.AddForm.Options;
@@ -115,34 +91,38 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
             // make sure we have 3 options
             if (options.Count < 1)
             {
-                options.Add(new ProductOptionName { Disabled = true });
+                options.Add(new ProductsOptionName { Disabled = true });
             }
 
             if (options.Count < 2)
             {
-                options.Add(new ProductOptionName { Disabled = true });
+                options.Add(new ProductsOptionName { Disabled = true });
             }
 
             if (options.Count < 3)
             {
-                options.Add(new ProductOptionName { Disabled = true });
+                options.Add(new ProductsOptionName { Disabled = true });
             }
+        }
+
+        #endregion
+
+        #region View
+
+        public ActionResult View(int id)
+        {
+            var model = new ProductViewViewModel();
+
+            return View(model);
         }
 
         #endregion
 
         public ActionResult Search()
         {
-            var model = new ProductSearchViewModel();
+            var model = new ProductsSearchViewModel();
 
             return View(model);
         }
-
-        ////protected override void SetAdditionalViewModelData(object modelObject)
-        ////{
-        ////    var model = (SharedLayoutViewModel)modelObject;
-        ////    model.ActiveTab = "products";
-        ////    base.SetAdditionalViewModelData(model);
-        ////}
     }
 }
