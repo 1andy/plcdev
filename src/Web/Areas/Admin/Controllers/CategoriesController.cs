@@ -37,6 +37,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
         public ActionResult Add()
         {
             var model = new CategoriesAddViewModel();
+
             SetupAddViewModel(model);
 
             return View(model);

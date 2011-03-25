@@ -3,6 +3,12 @@
     Model.Title = "New Product";
     Model.ActiveSubnav = "add";
 }
+<style>
+    label
+    {
+        display: block;
+    }
+</style>
 <h2>
     Add new product</h2>
 @Html.ValidationSummary()
@@ -51,35 +57,103 @@
                 Charge taxes</label>
             Checkbox </li>
     </ul>
-    Product Options (allow customers to select between variations of this product)
-    <br />
-    <input type="checkbox" />
-    This product has multiple variants that have one or more options that distinguish
-    them
-    <ul>
-        @for (int i = 0; i < Model.AddForm.Options.Count; i++)
-        {
-            var inputAttribute = Model.AddForm.Options[i].Disabled ? new { disabled = "disabled" } : null;
-            <li>
-                @Html.DropDownListFor(m => m.AddForm.Options[i].Name, Model.DefaultOptionNameListItems, inputAttribute)
-                @Html.TextBoxFor(m => m.AddForm.Options[i].Value, inputAttribute)
+    <div style="margin: 20px 0">
+        <label>
+            <input type="checkbox" id="has-variants" />
+            This product has multiple variants that have one or more options that distinguish
+            them
+        </label>
+        <script>
+            // initialize "has multiple variants" functionality
+            $(function () {
+                var _c = $("#has-variants");
+                var _vo = $("#vartian-options");
+                var _vol = _vo.find("li.option");
+                var _ao = _vo.find(".add");
+                var _ro = _vo.find(".remove");
 
-                @Model.AddForm.Options[i].Name
-            </li>
+                function updateCheckbox() {
+                    _c[0].checked = _vo.is(":visible");
+                }
+
+                function setInputsDisabled(_el, disabled) {
+                    var _inputs = _el.find("select, input");
+                    if (disabled) {
+                        _inputs.attr("disabled", "disabled");
+                    } else {
+                        _inputs.removeAttr("disabled");
+                    }
+                }
+
+                _c.click(function () {
+                    if (_c[0].checked) {
+                        _vo.show();
+                        if (!_vol.filter(":visible").length) {
+                            _vol.first().show();
+                        }
+                        setInputsDisabled(_vol.filter(":visible"), false);
+                        updateAddOptionVisibility();
+                    } else {
+                        _vo.hide();
+                        setInputsDisabled(_vol, true);
+                    }
+                });
+
+                function updateAddOptionVisibility() {
+                    _ao.toggle(_vol.filter(":not(:visible)").length > 0);
+                }
+
+                _ao.click(function () {
+                    var _next = _vol.filter(":not(:visible)").first();
+                    _next.show();
+                    setInputsDisabled(_next, false);
+                    updateAddOptionVisibility();
+                    this.blur();
+                    return false;
+                });
+
+                _ro.click(function () {
+                    var _l = $(this).closest("li");
+                    _l.hide();
+                    setInputsDisabled(_l, true);
+                    updateAddOptionVisibility();
+                    return false;
+                });
+
+                updateCheckbox();
+                updateAddOptionVisibility();
+            });
+        </script>
+        @{
+            bool allDisabled = Model.AddForm.Options.All(opt => opt.Disabled);
         }
-    </ul>
-    Categories
-    <ul>
-        <li></li>
-    </ul>
+        <ul id="vartian-options" style="display: @(allDisabled ? "none" : "block")">
+            @for (int i = 0; i < Model.AddForm.Options.Count; i++)
+            {
+                bool disabled = Model.AddForm.Options[i].Disabled;
+                var inputAttribute = disabled ? new { disabled = "disabled" } : null;
+                <li class="option" style="display: @(disabled ? "none" : "block")">
+                    @Html.DropDownListFor(m => m.AddForm.Options[i].Name, Model.DefaultOptionNameListItems, inputAttribute)
+                    @Html.TextBoxFor(m => m.AddForm.Options[i].Value, inputAttribute)
+                    @if (i > 0)
+                    {
+                        <a href="#" class="remove">remove</a>
+                    }
+                </li>
+            }
+            <li><a href="#" class="add">add another Option</a></li>
+        </ul>
+    </div>
+    <div style="margin: 20px 0">
+        Categories
+        <ul>
+            <li></li>
+        </ul>
+    </div>
     <div class="submit">
         <input type="submit" value="Create a new product" />
         or
         @Html.ActionLink("Cancel", "Index")
     </div>
 </fieldset>
-<p>
-    asda</p>
-<p>
-    asds</p>
 </form>

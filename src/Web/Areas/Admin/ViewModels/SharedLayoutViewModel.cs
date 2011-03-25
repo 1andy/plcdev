@@ -48,6 +48,13 @@ namespace PlexCommerce.Web.Areas.Admin
 
     }
 
+    //public class OptionsViewModel
+    //{
+    //    public string AgentType { get; set; }
+    //    public string[] AgentTypes { get; set; }
+    //    public SelectListItem[] AgentTypeListItems { get; set; }
+    //}
+
     public class ProductsAddViewModel : SharedLayoutViewModel
     {
         public IEnumerable<SelectListItem> DefaultOptionNameListItems { get; set; }

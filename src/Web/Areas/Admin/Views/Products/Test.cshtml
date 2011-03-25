@@ -1,0 +1,28 @@
+﻿@model OptionsViewModel
+      
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    input 
+    {
+        width: 30px;
+    }
+</style>
+    <title>Test</title>
+</head>
+<body>
+    <div>
+        @Html.DropDownListFor(m => m.AgentType, Model.AgentTypeListItems)
+        and
+        @for (int i = 0; i < Model.AgentTypes.Length; i++)
+        {
+            //@Html.DropDownListFor(m => m.AgentTypes[i], Model.AgentTypeListItems)
+            @Html.TextBoxFor(m => m.AgentTypes[i])
+        }
+    </div>
+</body>
+</html>

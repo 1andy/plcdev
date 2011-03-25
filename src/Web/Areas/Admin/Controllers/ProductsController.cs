@@ -17,6 +17,29 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
             return View(model);
         }
 
+        //        public ActionResult Test()
+        //        {
+        //var model = new OptionsViewModel();
+
+        //// for DropDownListFor
+        //model.AgentTypeListItems = new[]
+        //{
+        //    new SelectListItem { Text = "1", Value = "1" }, 
+        //    new SelectListItem { Text = "2", Value = "2" },
+        //    new SelectListItem { Text = "3", Value = "3" },
+        //};
+
+        //// 1 dropdown in the model
+        //model.AgentType = "2";
+
+        //// 3 dropdowns in array (setting AgentType does not affect)
+        //model.AgentTypes = new[] { "3", "2", "1" };
+
+        //return View(model);
+        //        }
+
+
+
         #region Add
 
         [HttpGet]
@@ -27,6 +50,8 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
             model.AddForm = new ProductsAddForm();
 
             SetupAddViewModel(model);
+
+            model.AddForm.Name = "Color";
             return View(model);
         }
 
@@ -38,6 +63,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
             model.AddForm = form;
 
             SetupAddViewModel(model);
+
             return View(model);
         }
 
@@ -64,7 +90,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 
             if (options.Count < 1)
             {
-                options.Add(new ProductOptionName { Name = "Title", Disabled = true });
+                options.Add(new ProductOptionName { Disabled = true });
             }
 
             if (options.Count < 2)
@@ -74,7 +100,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 
             if (options.Count < 3)
             {
-                options.Add(new ProductOptionName { Name = "Size", Disabled = true });
+                options.Add(new ProductOptionName { Disabled = true });
             }
         }
 
