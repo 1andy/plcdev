@@ -55,12 +55,14 @@ alter table [ProductVariantOptionValue]  drop constraint FK6DAFBC52BFB63F8D
     create table [Product] (
         ProductID INT IDENTITY NOT NULL,
        Name NVARCHAR(255) not null,
+       Description NVARCHAR(MAX) not null,
        primary key (ProductID)
     )
 
     create table [ProductVariant] (
         ProductVariantID INT IDENTITY NOT NULL,
-       Price DECIMAL(19,5) not null,
+       Price money not null,
+       Sku NVARCHAR(255) not null,
        ProductID INT not null,
        primary key (ProductVariantID)
     )

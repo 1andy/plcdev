@@ -19,5 +19,17 @@ namespace PlexCommerce
         public virtual IList<ProductVariant> Variants { get; set; }
 
         public virtual IList<ProductVariantOption> VariantOptions { get; set; }
+
+        //public void AddVariant(ProductVariant variant)
+        //{
+        //    Variants.Add(variant);
+        //    variant.Product = this;
+        //}
+
+        //public void AddVariantOption(ProductVariantOption variantOption)
+        //{
+        //    VariantOptions.Add(variantOption);
+        //    variantOption.Product = this;
+        //}
     }
 }

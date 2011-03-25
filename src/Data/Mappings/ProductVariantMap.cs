@@ -7,10 +7,11 @@ namespace PlexCommerce.Mappings
         public ProductVariantMap()
         {
             Id(x => x.Id, "ProductVariantID");
-            Map(x => x.Price).Not.Nullable();
+            Map(x => x.Price).CustomSqlType("MONEY").Not.Nullable();
+            Map(x => x.Sku).Not.Nullable();
 
-            References(x => x.Product, "ProductID").Not.Nullable().Cascade.All();
-            HasMany(x => x.VariantOptionValues).KeyColumn("ProductVariantID").Inverse();
+            References(x => x.Product, "ProductID").Not.Nullable();
+            HasMany(x => x.VariantOptionValues).KeyColumn("ProductVariantID").Inverse().Cascade.All();
         }
     }
 }

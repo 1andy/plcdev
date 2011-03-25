@@ -9,8 +9,8 @@ namespace PlexCommerce.Mappings
             Id(x => x.Id, "ProductVariantOptionID");
             Map(x => x.Name).Not.Nullable();
 
-            References(x => x.Product).Not.Nullable().Column("ProductID").Cascade.All();
-            HasMany(x => x.VariantOptionValues).KeyColumn("ProductVariantOptionID").Inverse();
+            References(x => x.Product, "ProductID").Not.Nullable();
+            HasMany(x => x.VariantOptionValues).KeyColumn("ProductVariantOptionID").Inverse().Cascade.All();
         }
     }
 }

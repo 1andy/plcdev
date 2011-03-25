@@ -9,8 +9,8 @@ namespace PlexCommerce.Mappings
             Id(x => x.Id, "ProductVariantOptionValue");
             Map(x => x.Value);
 
-            References(x => x.Option).Not.Nullable().Column("ProductVariantOptionID").UniqueKey("OptionVariant").Cascade.All();
-            References(x => x.Variant).Not.Nullable().Column("ProductVariantID").UniqueKey("OptionVariant").Cascade.All();
+            References(x => x.Option, "ProductVariantOptionID").Not.Nullable().UniqueKey("OptionVariant");
+            References(x => x.Variant, "ProductVariantID").Not.Nullable().UniqueKey("OptionVariant");
         }
     }
 }

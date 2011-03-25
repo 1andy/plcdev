@@ -158,9 +158,6 @@
     <Content Include="Areas\Admin\Views\Products\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\Views\Products\Categories.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
