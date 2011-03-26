@@ -1,29 +1,22 @@
 ﻿@model ProductsViewViewModel
 <h1>
     @Model.Name</h1>
-<div id="product-cats">
-    <div class="current">
-    </div>
-    <a href="#" class="add">Add to another category</a>
-    <div class="list" style="display: none; border: solid 1px #aaa; background: #ffe;
-        padding: 10px;">
-        @Html.Partial("SelectCategory", Model.Categories)
-    </div>
-</div>
+@{Html.RenderAction("ViewCategories", new { id = Model.Id });}
 <script>
     $(function () {
-        var _pc = $("#product-cats");
-        var _a = _pc.find(".add");
-        var _list = _pc.find(".list");
-
-        _a.click(function () {
-            _list.toggle();
-        });
-
-        $(document.body).bind("category-selected", function () {
-            _list.hide();
-            // show progress
-            // make async call that reloads product categories section
+        $(".async-form").live("submit", function () {
+            $.ajax({
+                type: 'POST',
+                url: this.action,
+                data: $(this).serialize(),
+                dataType: 'html',
+                error: function () { alert("Error occurred while processing the request.\nPlease reload the page and try again."); },
+                context: this,
+                success: function (result) {
+                    $(this).replaceWith(result);
+                }
+            });
+            return false;
         });
     });
 </script>

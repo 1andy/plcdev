@@ -18,26 +18,46 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 
             var model = new ProductsViewViewModel
             {
+                Id = product.Id,
                 Name = product.Name
             };
-
-            // TODO: build a list with <ul><li> scheme
-            model.Categories = _session.Query<Category>().Where(c => c.ParentCategory == null)
-                .FetchMany(c => c.ChildCategories).ThenFetchMany(c => c.ChildCategories).ThenFetchMany(c => c.ChildCategories);
 
             return View(model);
         }
 
-
-        [HttpGet]
-        public ActionResult ViewCategories(int id)
+        public ActionResult ViewCategories(int id, int[] categories)
         {
-            _session.Get<Product>(id);
+            var product = _session.Get<Product>(id);
+
+            // update categories
+            if (Request.HttpMethod == "POST")
+            {
+                categories = categories ?? new int[0];
+                using (var transaction = _session.BeginTransaction())
+                {
+                    var newCategories = categories.Length > 0 ?
+                        _session.Query<Category>().Where(c => categories.Contains(c.Id)) : (IEnumerable<Category>)new Category[0];
+
+                    product.SetNewCategories(newCategories);
+
+                    _session.SaveOrUpdate(product);
+                    transaction.Commit();
+                }
+            }
 
             var model = new ProductsViewCategoriesViewModel();
-            
 
-            return PartialView();
+            model.ProductCategories = product.Categories;
+
+            // query categories prefetching children 3 levels deep
+            model.Categories = _session.Query<Category>().Where(c => c.ParentCategory == null)
+                .FetchMany(c => c.ChildCategories)
+                .ThenFetchMany(c => c.ChildCategories)
+                .ThenFetchMany(c => c.ChildCategories);
+
+
+
+            return PartialView(model);
         }
     }
 }

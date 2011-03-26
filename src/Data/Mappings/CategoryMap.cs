@@ -12,7 +12,7 @@ namespace PlexCommerce.Mappings
 
             References(x => x.ParentCategory, "ParentCategoryID");
             HasMany(x => x.ChildCategories).KeyColumn("ParentCategoryID").Inverse().Cascade.All();
-            HasManyToMany(x => x.Products).Table("CategoryProduct").ChildKeyColumn("ProductID").ParentKeyColumn("CategoryID").Cascade.All();
+            HasManyToMany(x => x.Products).AsSet().Table("CategoryProduct").ChildKeyColumn("ProductID").ParentKeyColumn("CategoryID").Cascade.All();
         }
     }
 }

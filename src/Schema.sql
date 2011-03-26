@@ -49,7 +49,8 @@ alter table [ProductVariantOptionValue]  drop constraint FK6DAFBC52BFB63F8D
 
     create table CategoryProduct (
         CategoryID INT not null,
-       ProductID INT not null
+       ProductID INT not null,
+       primary key (ProductID, CategoryID)
     )
 
     create table [Product] (

@@ -11,7 +11,7 @@
         _sc.delegate("a", "click", function () {
             this.blur();
 
-            _sc.trigger("category-selected");
+            _sc.trigger("category-selected", [$(this).data("id")]);
             return false;
         });
     });

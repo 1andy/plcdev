@@ -7,6 +7,8 @@ namespace PlexCommerce.Web.Areas.Admin
 {
     public class ProductsViewViewModel : SharedLayoutViewModel
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         //public IEnumerable<SelectListItem> CategoriesListItems { get; set; }

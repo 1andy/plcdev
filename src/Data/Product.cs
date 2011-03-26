@@ -13,23 +13,27 @@ namespace PlexCommerce
 
         public virtual string Description { get; set; }
 
-        public virtual IList<Category> Categories { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
 
         // at least one variant is always available
         public virtual IList<ProductVariant> Variants { get; set; }
 
         public virtual IList<ProductVariantOption> VariantOptions { get; set; }
 
-        /*public void AddVariant(ProductVariant variant)
+        public virtual void SetNewCategories(IEnumerable<Category> newCategories)
         {
-            Variants.Add(variant);
-            variant.Product = this;
-        }
+            // remove the product from all categies
+            foreach (var category in Categories.Where(c => !newCategories.Contains(c)).ToArray())
+            {
+                category.Products.Remove(this);
+                Categories.Remove(category);
+            }
 
-        public void AddVariantOption(ProductVariantOption variantOption)
-        {
-            VariantOptions.Add(variantOption);
-            variantOption.Product = this;
-        }*/
+            foreach (var category in newCategories)
+            {
+                category.Products.Add(this);
+                Categories.Add(category);
+            }
+        }
     }
 }

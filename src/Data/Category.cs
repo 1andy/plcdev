@@ -17,6 +17,6 @@ namespace PlexCommerce
 
         public virtual IList<Category> ChildCategories { get; set; }
 
-        public virtual IList<Product> Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

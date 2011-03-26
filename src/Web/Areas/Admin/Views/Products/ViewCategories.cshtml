@@ -1,3 +1,44 @@
 ﻿@model ProductsViewCategoriesViewModel
+<form action="@Url.Action(null)" class="async-form" id="product-cats">
+@*@DateTime.Now.ToLongTimeString()*@
+<div class="current">
+    @foreach (var c in Model.ProductCategories)
+    {
+        <div>
+            <input type=hidden name=categories value=@c.Id />
+            @c.Name <a href="#">remove</a>
+        </div>
+    }
+</div>
+<a href="#" class="add">Add to another category</a>
+<div class="list" style="display: none; border: solid 1px #aaa; background: #ffe;
+    padding: 10px;">
+    @Html.Partial("SelectCategory", Model.Categories)
+</div>
+</form>
+<script>
+    $(function () {
+        var _pc = $("#product-cats");
+        var _r = _pc.find(".current a");
+        var _a = _pc.find(".add");
+        var _list = _pc.find(".list");
 
+        _r.die("click").live("click", function () {
+            $(this).closest("div").find("input").remove();
+            _pc.submit();
+            return false;
+        });
 
+        _a.die("click").live("click", function () {
+            _list.toggle();
+            this.blur();
+            return false;
+        });
+
+        _list.unbind("category-selected").bind("category-selected", function (event, id) {
+            _list.hide();
+            $("<input type='hidden' name='categories'/>").val(id).appendTo(_pc);
+            _pc.submit();
+        });
+    });
+</script>
