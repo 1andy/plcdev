@@ -3,5 +3,15 @@
     Model.PageTitle = "Products";
     Model.ActiveSubnav = "index";
 }
-<h2>
-    Index</h2>
+<table>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(product.Name, "View", new { id = product.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

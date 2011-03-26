@@ -22,7 +22,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 
         public ActionResult Index(string q)
         {
-            var model = new ProductsIndexViewModel();
+            var model = new ProductsIndexViewModel { Products = _session.Query<Product>() };
 
             return View(model);
         }
