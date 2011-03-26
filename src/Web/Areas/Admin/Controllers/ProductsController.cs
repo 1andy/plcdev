@@ -11,7 +11,7 @@ using NHibernate.Linq;
 namespace PlexCommerce.Web.Areas.Admin.Controllers
 {
     [ValidateInput(false)]
-    public class ProductsController : AdminControllerBase
+    public partial class ProductsController : AdminControllerBase
     {
         private readonly ISession _session;
 
@@ -106,69 +106,6 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
                 options.Add(new ProductOptionData { Disabled = true });
             }
         }
-
-        #endregion
-
-        #region View
-
-        public ActionResult View(int id)
-        {
-            var product = _session.Get<Product>(id);
-
-            var model = new ProductsViewViewModel
-                        {
-                            Name = product.Name
-                        };
-
-            //var cats = _session.CreateCriteria(typeof(Category))
-            //    .Add(Restrictions.IsNull("ParentCategory"))
-            //    .SetFetchMode("ChildCategories", FetchMode.Eager)
-            //    .SetFetchMode("ChildCategories.ChildCategories", FetchMode.Eager)
-            //    .SetFetchMode("ChildCategories.ChildCategories.ChildCategories", FetchMode.Eager)
-            //    .List<Category>();
-
-            //ExploreCats(cats);
-
-            var rootCategories = _session.Query<Category>().Where(c => c.ParentCategory == null)
-                .FetchMany(c => c.ChildCategories).ThenFetchMany(c => c.ChildCategories).ThenFetchMany(c => c.ChildCategories);
-
-            model.CategoriesListItems = CreateListItemsFromCategories(rootCategories);
-
-            //ExploreCats(cats2);
-
-            //var categories = _session.QueryOver<Category>().Where(c => c.ParentCategory == null);
-
-            //categories.ToList();)
-
-            return View(model);
-        }
-
-        private static IEnumerable<SelectListItem> CreateListItemsFromCategories(IEnumerable<Category> categories, int level = 0)
-        {
-            string prefix = string.Empty.PadRight(level * 4,'.');
-            var items = new List<SelectListItem>();
-
-            foreach (var category in categories)
-            {
-                var item = new SelectListItem
-                           {
-                               Value = category.Id.ToString(),
-                               Text = prefix + category.Name
-                           };
-                items.Add(item);
-                items.AddRange(CreateListItemsFromCategories(category.ChildCategories, level + 1));
-            }
-
-            return items;
-        }
-
-        //private void ExploreCats(IEnumerable<Category> cats)
-        //{
-        //    foreach (var c in cats)
-        //    {
-        //        ExploreCats(c.ChildCategories);
-        //    }
-        //}
 
         #endregion
 

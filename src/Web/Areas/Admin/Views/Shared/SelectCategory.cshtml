@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Category>
+<style>
+    #select-category li ul
+    {
+        margin-left: 20px;
+    }
+</style>
+<script>
+    $(function () {
+        var _sc = $("#select-category");
+        _sc.delegate("a", "click", function () {
+            this.blur();
+
+            _sc.trigger("category-selected");
+            return false;
+        });
+    });
+</script>
+<div id="select-category">
+    @RenderCategories(Model)
+</div>
+@helper RenderCategories(IEnumerable<Category> categories)
+    {
+    <ul>
+        @foreach (var c in categories)
+        {
+            <li><span>@c.Name</span> <a href="#" data-id="@c.Id">add</a>
+                @RenderCategories(c.ChildCategories)
+            </li>
+        }
+    </ul>
+}
