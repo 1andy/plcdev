@@ -28,7 +28,8 @@ namespace PlexCommerce.Web
             routes.MapLowercaseRoute(
                 "Default",
                 "{controller}/{action}/{id}",
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new[] { "PlexCommerce.Web.Controllers" });
         }
 
         protected void Application_Start()

@@ -27,6 +27,13 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
             return View(model);
         }
 
+        public ActionResult Search()
+        {
+            var model = new ProductsSearchViewModel();
+
+            return View(model);
+        }
+
         #region Add
 
         [HttpGet]
@@ -108,12 +115,5 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
         }
 
         #endregion
-
-        public ActionResult Search()
-        {
-            var model = new ProductsSearchViewModel();
-
-            return View(model);
-        }
     }
 }

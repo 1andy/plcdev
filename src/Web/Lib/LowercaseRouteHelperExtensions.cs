@@ -17,12 +17,13 @@ namespace PlexCommerce.Web
             context.Routes.Add(name, route);
         }
 
-        public static void MapLowercaseRoute(this RouteCollection routes, string name, string url, object defaults)
+        public static void MapLowercaseRoute(this RouteCollection routes, string name, string url, object defaults, string[] namespaces = null)
         {
             var route = new LowercaseRoute(
                 url,
                 new RouteValueDictionary(defaults),
                 null,
+                new RouteValueDictionary(new { Namespaces = namespaces }),
                 new MvcRouteHandler());
 
             routes.Add(name, route);

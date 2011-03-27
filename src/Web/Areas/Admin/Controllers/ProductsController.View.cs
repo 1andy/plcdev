@@ -10,7 +10,7 @@ using NHibernate.Linq;
 
 namespace PlexCommerce.Web.Areas.Admin.Controllers
 {
-    partial class ProductsController
+    public partial class ProductsController
     {
         public ActionResult View(int id)
         {
@@ -54,8 +54,6 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
                 .FetchMany(c => c.ChildCategories)
                 .ThenFetchMany(c => c.ChildCategories)
                 .ThenFetchMany(c => c.ChildCategories);
-
-
 
             return PartialView(model);
         }
