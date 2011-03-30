@@ -52,6 +52,7 @@
     <Compile Include="Mappings\ProductMap.cs" />
     <Compile Include="Mappings\ProductVariantOptionValueMap.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="ProductCollection.cs" />
     <Compile Include="ProductVariant.cs" />
     <Compile Include="Mappings\ProductVariantMap.cs" />
     <Compile Include="Mappings\ProductVariantOptionMap.cs" />
