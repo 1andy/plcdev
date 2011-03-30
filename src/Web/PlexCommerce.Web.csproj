@@ -98,7 +98,7 @@
     <Compile Include="Areas\Admin\ViewModels\Products\ProductsSearchViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Products\ProductsViewViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Products\ProductsViewCategoriesViewModel.cs" />
-    <Compile Include="Areas\Admin\ViewModels\SharedLayoutViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Shared\SharedLayoutViewModel.cs" />
     <Compile Include="Common\PlexControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -108,6 +108,7 @@
     <Compile Include="Lib\LowercaseRouteHelperExtensions.cs" />
     <Compile Include="Lib\StructureMapControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Shared\SharedLayoutViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Content\css\01-reset.css" />
@@ -122,6 +123,7 @@
     <Content Include="Areas\Admin\Content\css\img\throbber.png" />
     <Content Include="Areas\Admin\Scripts\01-jquery-1.5.1.min.js" />
     <Content Include="Areas\Admin\Scripts\10-common.js" />
+    <Content Include="Content\css\01-reset.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\01-jquery-1.5.1.min.js" />
     <Content Include="Scripts\10-common.js" />
@@ -133,11 +135,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\ViewModels\Shared\" />
-    <Folder Include="Content\css\" />
     <Folder Include="Content\img\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Web.config" />
