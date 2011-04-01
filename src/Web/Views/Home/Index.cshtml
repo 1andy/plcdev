@@ -1,7 +1,32 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@model HomeIndexViewModel
+@section head {
+    <style>
+        li ul.cats
+        {
+            margin-left: 20px;
+        }
+    </style>
 }
-
-<h2>Index</h2>
-
+<h2>
+    Index</h2>
+<div class="clearfix">
+    <div style="float: left; width: 300px">
+        Catalog
+        @RenderCategories(Model.Categories)
+    </div>
+</div>
+@helper RenderCategories(IList<Category> categories)
+    {
+        if (categories.Count > 0)
+        {
+    <ul class="cats">
+        @foreach (var category in categories)
+        {
+            <li>
+                @Html.ActionLink(category.Name, "View", "Categories", new { id = category.Id }, null)
+                @RenderCategories(category.ChildCategories)
+            </li>
+        }
+    </ul>
+        }
+}

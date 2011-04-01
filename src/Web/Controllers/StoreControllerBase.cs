@@ -16,7 +16,7 @@ namespace PlexCommerce.Web.Controllers
             var sharedLayoutViewModel = model as SharedLayoutViewModel;
             if (sharedLayoutViewModel != null)
             {
-                sharedLayoutViewModel.PageTitle = "123";
+                sharedLayoutViewModel.StoreName = "Jama Stuff";
             }
 
             base.SetAdditionalViewModelData(model);
