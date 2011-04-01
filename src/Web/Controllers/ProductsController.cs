@@ -7,13 +7,13 @@ using NHibernate;
 
 namespace PlexCommerce.Web.Controllers
 {
-    public class CategoriesController : StoreControllerBase
+    public class ProductsController : StoreControllerBase
     {
         private readonly ISession _session;
 
         #region ctor
 
-        public CategoriesController(ISession session)
+        public ProductsController(ISession session)
             : base(session)
         {
             _session = session;
@@ -23,10 +23,7 @@ namespace PlexCommerce.Web.Controllers
 
         public ActionResult View(int id)
         {
-            var model = new CategoriesViewViewModel
-                        {
-                            Category = _session.Get<Category>(id)
-                        };
+            var model = new ProductsViewViewModel { Product = _session.Get<Product>(id) };
 
             return View(model);
         }

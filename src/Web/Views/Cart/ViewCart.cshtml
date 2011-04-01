@@ -1,0 +1,11 @@
+﻿@model CartViewCartViewModel
+<h2>
+    ViewCart</h2>
+@foreach (var cartItem in Model.CartItems)
+{
+    <div>
+        @cartItem.Variant.Product.Name (@cartItem.Variant.Id) &mdash; @cartItem.Quantity
+        item(s)
+    </div>
+}
+@Html.ActionLink("Checkout", "Checkout")

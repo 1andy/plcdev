@@ -24,8 +24,10 @@ namespace PlexCommerce.Web.Controllers
 
         public ActionResult Index()
         {
-            var model = new HomeIndexViewModel();
-            model.Categories = _session.Query<Category>().Where(c => c.ParentCategory == null).ToList();
+            var model = new HomeIndexViewModel
+                        {
+                            Categories = _session.Query<Category>().Where(c => c.ParentCategory == null).ToList()
+                        };
 
             return View(model);
         }

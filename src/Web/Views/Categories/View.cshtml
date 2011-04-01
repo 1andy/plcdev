@@ -1,0 +1,9 @@
+﻿@model CategoriesViewViewModel
+<h2>
+    @Model.Category.Name</h2>
+@foreach (var product in Model.Category.Products)
+{
+    <div class="product-in-list">
+        @Html.ActionLink(product.Name, "View", "Products", new { id = product.Id }, null)
+    </div>
+}

@@ -1,0 +1,11 @@
+﻿@model ProductsViewViewModel
+<h1>
+    @Model.Product.Name
+</h1>
+@foreach (var variant in Model.Product.Variants)
+{
+    <div>
+        Variant: @variant.Id
+        @Html.ActionLink("Buy", "AddToCart", "Cart", new { id = variant.Id }, null)
+    </div>
+}
