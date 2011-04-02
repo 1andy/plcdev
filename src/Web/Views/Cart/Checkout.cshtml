@@ -1,0 +1,32 @@
+﻿@model CartCheckoutViewModel
+@section head {
+    <style>
+        label
+        {
+            display: block;
+            margin: 10px;
+        }
+    </style>
+}
+<h1>
+    Checkout</h1>
+<form action="" method="post">
+@Html.ValidationSummary()
+<label>
+    Name
+    @Html.TextBoxFor(m => m.Form.Name)
+</label>
+<label>
+    Email
+    @Html.TextBoxFor(m => m.Form.Email)
+</label>
+<label>
+    Shipping Address1
+    @Html.TextBoxFor(m => m.Form.ShippingAddress.Address1)
+</label>
+<label>
+    Billing Address1
+    @Html.TextBoxFor(m => m.Form.BillingAddress.Address1)
+</label>
+<input type="submit" />
+</form>
