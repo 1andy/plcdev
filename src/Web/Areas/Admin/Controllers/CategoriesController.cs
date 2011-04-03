@@ -19,7 +19,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
     {
         private readonly ISession _session;
 
-        public CategoriesController(ISession session)
+        public CategoriesController(ISession session) : base(session)
         {
             _session = session;
         }

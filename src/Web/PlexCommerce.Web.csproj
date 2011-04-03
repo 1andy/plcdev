@@ -93,6 +93,7 @@
     <Compile Include="Areas\Admin\ViewModels\Categories\CategoriesAddViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Categories\CategoriesIndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Orders\OrderIndexViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Orders\OrderViewViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Products\ProductsIndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Products\ProductOptionData.cs" />
     <Compile Include="Areas\Admin\ViewModels\Products\ProductsAddForm.cs" />
@@ -237,6 +238,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Orders\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Orders\View.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

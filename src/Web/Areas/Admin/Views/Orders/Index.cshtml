@@ -5,3 +5,9 @@
 }
 <h2>
     Index</h2>
+@foreach (var order in Model.Orders)
+{
+    <div>
+        @Html.ActionLink(order.Id.ToString(), "View", new { id = order.Id })
+    </div>
+}

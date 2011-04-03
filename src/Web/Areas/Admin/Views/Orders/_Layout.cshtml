@@ -7,6 +7,10 @@
     @RenderSection("head", false)
 }
 @section subnav{
-asdsa
+    <form@(Model.ActiveSubnav == "index" ? " class=active" : string.Empty) action="@Url.Action("Index", "Orders")">
+    <span class="text">Search orders for</span>
+    @Html.TextBox("q")
+    <input type="submit" value="Search" />
+    </form>
 }
 @RenderBody()

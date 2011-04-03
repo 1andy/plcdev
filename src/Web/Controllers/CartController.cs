@@ -104,7 +104,11 @@ namespace PlexCommerce.Web.Controllers
                     foreach (var item in cartItems)
                     {
                         var variant = _session.Get<ProductVariant>(item.Key);
-                        if (variant == null) continue;
+                        if (variant == null)
+                        {
+                            continue;
+                        }
+
                         var orderItem = new OrderItem
                                         {
                                             ProductVariant = variant,

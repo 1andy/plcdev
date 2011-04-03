@@ -4,11 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.WebPages;
+using NHibernate;
 
 namespace PlexCommerce.Web.Areas.Admin.Controllers
 {
     public class HomeController : AdminControllerBase
     {
+        public HomeController(ISession session) : base(session)
+        {
+        }
+
         public ActionResult Index()
         {
             var model = new SharedLayoutViewModel();
