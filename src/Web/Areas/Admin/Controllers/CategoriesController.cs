@@ -19,10 +19,14 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
     {
         private readonly ISession _session;
 
+        #region ctor
+
         public CategoriesController(ISession session) : base(session)
         {
             _session = session;
         }
+
+        #endregion
 
         public ActionResult Index()
         {

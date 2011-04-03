@@ -11,10 +11,14 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
     {
         private readonly ISession _session;
 
+        #region ctor
+
         protected AdminControllerBase(ISession session)
         {
             _session = session;
         }
+
+        #endregion
 
         protected override void SetAdditionalViewModelData(object model)
         {

@@ -10,9 +10,13 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 {
     public class HomeController : AdminControllerBase
     {
+        #region ctor
+
         public HomeController(ISession session) : base(session)
         {
         }
+
+        #endregion
 
         public ActionResult Index()
         {
