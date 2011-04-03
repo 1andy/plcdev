@@ -85,6 +85,8 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllerBase.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Customers\CustomersIndexViewModel.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomersController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.View.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
@@ -101,6 +103,7 @@
     <Compile Include="Areas\Admin\ViewModels\Products\ProductsSearchViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Products\ProductsViewViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Products\ProductsViewCategoriesViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Shared\CustomersViewViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Shared\SharedLayoutViewModel.cs" />
     <Compile Include="Common\PlexControllerBase.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -234,13 +237,25 @@
     <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\Views\Orders\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Customers\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Orders\View.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Customers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Orders\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\Views\Orders\View.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Customers\View.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

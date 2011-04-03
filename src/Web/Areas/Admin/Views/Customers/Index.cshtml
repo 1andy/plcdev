@@ -1,0 +1,11 @@
+﻿@model CustomersIndexViewModel
+@{
+    Model.PageTitle = "Customers";
+    Model.ActiveSubnav = "index";
+}
+@foreach (var customer in Model.Customers)
+{
+    <div>
+        @Html.ActionLink(customer.Name, "View", new { id = customer.Id })
+    </div>
+}

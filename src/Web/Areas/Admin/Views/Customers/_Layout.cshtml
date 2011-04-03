@@ -1,0 +1,16 @@
+﻿@model SharedLayoutViewModel
+@{
+    Model.ActiveTab = "customers";
+    Layout = "../Shared/_Layout.cshtml";
+}
+@section head{
+    @RenderSection("head", false)
+}
+@section subnav{
+    <form@(Model.ActiveSubnav == "index" ? " class=active" : string.Empty) action="@Url.Action("Index", "Customers")">
+    <span class="text">Search customers for</span>
+    @Html.TextBox("q")
+    <input type="submit" value="Search" />
+    </form>
+}
+@RenderBody()

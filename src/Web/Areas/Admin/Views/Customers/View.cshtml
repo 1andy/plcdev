@@ -1,0 +1,17 @@
+﻿@model CustomersViewViewModel
+@{
+    Model.PageTitle = "Customers";
+    Model.ActiveSubnav = "index";
+}
+<div>
+    @Model.Customer.Name
+</div>
+Orders:
+@foreach (var order in Model.Customer.Orders)
+{
+    <div>
+        <a href="@Url.Action("View", "Orders", new { id = order.Id })">
+            @order.Items.Sum(it => it.ProductVariant.Price).ToString("c")
+        </a>
+    </div>
+}

@@ -4,6 +4,7 @@
     <SkipFolder>069B03B8-F196-4F43-A246-CD33CC468F4C/d:Areas/d:Admin/d:ViewModels/d:Orders</SkipFolder>
     <SkipFolder>069B03B8-F196-4F43-A246-CD33CC468F4C/d:Areas/d:Admin/d:ViewModels/d:Products</SkipFolder>
     <SkipFolder>069B03B8-F196-4F43-A246-CD33CC468F4C/d:Areas/d:Admin/d:ViewModels/d:Shared</SkipFolder>
+    <SkipFolder>069B03B8-F196-4F43-A246-CD33CC468F4C/d:Areas/d:Admin/d:ViewModels/d:Customers</SkipFolder>
     <SkipFolder>069B03B8-F196-4F43-A246-CD33CC468F4C/d:Areas/d:Admin/d:ViewModels</SkipFolder>
     <SkipFolder>069B03B8-F196-4F43-A246-CD33CC468F4C/d:Common</SkipFolder>
     <SkipFolder>069B03B8-F196-4F43-A246-CD33CC468F4C/d:Lib</SkipFolder>
