@@ -2,5 +2,13 @@
 @{
     Model.PageTitle = "Orders";
 }
-<h2>
-    View</h2>
+@Html.ActionLink("Back to list", "Index")
+@foreach (var item in Model.Order.Items)
+{
+    <div>
+        Item: @item.Id &ndash; @item.ProductVariant.Price.ToString("c")
+    </div>
+}
+<div>
+    Customer: @Html.ActionLink(Model.Order.Customer.Name, "View", "Customers", new { id = Model.Order.Customer.Id }, null)
+</div>

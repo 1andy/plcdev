@@ -35,6 +35,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
         public ActionResult View(int id)
         {
             var model = new OrderViewViewModel();
+            model.Order = _session.Get<Order>(id);
 
             return View(model);
         }

@@ -5,12 +5,12 @@ namespace PlexCommerce.Web
 {
     public static class LowercaseRouteHelperExtensions
     {
-        public static void MapLowercaseRoute(this AreaRegistrationContext context, string name, string url, object defaults)
+        public static void MapLowercaseRoute(this AreaRegistrationContext context, string name, string url, object defaults, object constraints = null)
         {
             var route = new LowercaseRoute(
                 url,
                 new RouteValueDictionary(defaults),
-                null,
+                constraints == null ? null : new RouteValueDictionary(constraints),
                 new RouteValueDictionary(new { context.Namespaces, area = context.AreaName, UseNamespaceFallback = false }),
                 new MvcRouteHandler());
 

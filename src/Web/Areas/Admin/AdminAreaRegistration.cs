@@ -12,22 +12,19 @@ namespace PlexCommerce.Web.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            ////            var route = new LowercaseRoute("Admin/{controller}/{action}/{id}",
-            //                                           new RouteValueDictionary(new { controller = "Home", action = "Index", id = UrlParameter.Optional }),
-            //                                           null,
-            //                                           new RouteValueDictionary(new
-            //                                           {
-            //                                               Namespaces = new[] { "PlexCommerce.Web.Areas.Admin.*" },
-            //                                               area = "Admin",
-            //                                               UseNamespaceFallback = false
-            //                                           }),
-            //                                           new MvcRouteHandler());
-            ////            context.Routes.Add("Admin_default", route);
+            // map /admin/products/123
+            context.MapLowercaseRoute(
+                "Admin_view",
+                "Admin/{controller}/{id}",
+                new { controller = "Home", action = "View" },
+                new { id = @"\d+" });
 
+            // map /admin/products/edit/123
             context.MapLowercaseRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new { action = @"^\D.*" });
         }
     }
 }
