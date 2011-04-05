@@ -69,14 +69,28 @@ a#title-shadow
 {
     display: block;
     background: #619c00;
-    color: #fff;
     line-height: 1.95em;
+    color: #fff;
     text-decoration: none;
-    padding: 1px 16px 2px;
-    -moz-border-radius: 2px 2px 0 0;
-    -webkit-border-radius: 2px 2px 0 0;
     border-radius: 2px 2px 0 0;
-    /*text-shadow: 0 0 4px rgba(0,0,0,0.2);*/
+}
+
+#nav a, #nav span.helper
+{
+    padding: 1px 16px 2px;
+}
+
+#nav li:nth-child(n+2):not(.active) a
+{
+    padding-left: 17px;
+}
+
+#nav span.helper
+{
+    display: block;
+    height: 1px;
+    margin-top: -4px;
+    visibility: hidden;
 }
 
 #nav li.minor
@@ -88,12 +102,6 @@ a#title-shadow
     background: #73a91b;
 }
 
-#nav li:hover
-{
-    -moz-box-shadow: #92be82 0 0 3px;
-    -webkit-box-shadow: #92be82 0 0 3px;
-}
-
 #nav a:hover
 {
     color: #fff;
@@ -102,9 +110,12 @@ a#title-shadow
 
 #nav li.active
 {
-    -moz-box-shadow: 0 5px 8px rgba(0,0,0,0.2);
-    -webkit-box-shadow: 0 5px 8px rgba(0,0,0,0.2);
-    /*box-shadow: 0 5px 8px rgba(0,0,0,0.2);*/
+    box-shadow: 0 5px 8px rgba(0,0,0,0.2);
+}
+
+#nav li.active a, #nav span.helper
+{
+    font-weight: bold;
 }
 
 #nav li.active a
@@ -113,8 +124,6 @@ a#title-shadow
     position: relative;
     z-index: 4;
     color: #000;
-    font-weight: bold;
-    text-shadow: none;
 }
 
 #tab-home img

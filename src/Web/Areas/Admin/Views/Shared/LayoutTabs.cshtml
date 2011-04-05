@@ -4,24 +4,19 @@
         var homeImageUrl = Url.Content("~/Areas/Admin/Content/img/" + (Model.ActiveTab == "home" ? "home-active.png" : "home.png"));
     }
     <img src="@homeImageUrl"/></a></li>
-<li@(Model.ActiveTab == "orders" ? " class=active" : string.Empty)>
-    @Html.ActionLink("Orders (1)", string.Empty, "Orders")
-</li>
-<li@(Model.ActiveTab == "customers" ? " class=active" : string.Empty)>
-    @Html.ActionLink("Customers", string.Empty, "Customers")
-</li>
-<li@(Model.ActiveTab == "products" ? " class=active" : string.Empty)>
-    @Html.ActionLink("Products", string.Empty, "Products")
-</li>
-<li@(Model.ActiveTab == "content" ? " class=active" : string.Empty)>
-    @Html.ActionLink("Content", string.Empty, "Content")
-</li>
-<li@(Model.ActiveTab == "marketing" ? " class=active" : string.Empty)>
-    @Html.ActionLink("Marketing", string.Empty, "Marketing")
-</li>
-<li class="minor@(Model.ActiveTab == "settings" ? " active" : string.Empty)">
-    @Html.ActionLink("Settings", string.Empty, "Settings")
-</li>
-<li class="minor@(Model.ActiveTab == "maintenance" ? " active" : string.Empty)">
-    @Html.ActionLink("Maintenance", string.Empty, "Maintenance")
-</li>
+@RenderTab("orders", "Orders", "Orders (1)")
+@RenderTab("customers", "Customers", "Customers")
+@RenderTab("products", "Products", "Products")
+@RenderTab("content", "Content", "Content")
+@RenderTab("marketing", "Marketing", "Marketing")
+@RenderTab("settings", "Settings", "Settings", "minor")
+@RenderTab("maintenance", "Maintenance", "Maintenance", "minor")
+@helper RenderTab(string tabId, string controller, string text, string additionalClass = null)
+    {
+        string _class = string.Format("{0} {1}", additionalClass, Model.ActiveTab == tabId ? "active" : string.Empty).Trim();
+    <li class="@_class" style="text-align: center"><a href="@Url.Action(string.Empty, controller)" style="position: relative">
+        @text
+    </a>
+        <span class='helper'>@text</span>
+    </li>
+}
