@@ -69,7 +69,7 @@ a#title-shadow
 {
     display: block;
     background: #619c00;
-    line-height: 1.95em;
+    line-height: 2.05em;
     color: #fff;
     text-decoration: none;
     border-radius: 2px 2px 0 0;
@@ -77,7 +77,7 @@ a#title-shadow
 
 #nav a, #nav span.helper
 {
-    padding: 1px 16px 2px;
+    padding: 1px 16px 1px;
 }
 
 #nav li:nth-child(n+2):not(.active) a

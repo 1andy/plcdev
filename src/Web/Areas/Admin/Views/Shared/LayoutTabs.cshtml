@@ -14,9 +14,7 @@
 @helper RenderTab(string tabId, string controller, string text, string additionalClass = null)
     {
         string _class = string.Format("{0} {1}", additionalClass, Model.ActiveTab == tabId ? "active" : string.Empty).Trim();
-    <li class="@_class" style="text-align: center"><a href="@Url.Action(string.Empty, controller)" style="position: relative">
+    <li class="@_class"><a href="@Url.Action(string.Empty, controller)">
         @text
-    </a>
-        <span class='helper'>@text</span>
-    </li>
+    </a><span class='helper'>@text</span> </li>
 }
