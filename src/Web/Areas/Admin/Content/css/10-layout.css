@@ -74,7 +74,7 @@ a#title-shadow
     text-decoration: none;
     text-align: center;
     border-radius: 2px 2px 0 0;
-    padding: 1px 15px;
+    padding: 1px 16px;
 }
 
 #nav a span
@@ -85,20 +85,6 @@ a#title-shadow
     overflow: hidden;
     margin-top: -1px;
 }
-
-/*#nav li:nth-child(n+2):not(.active) a
-{
-    padding-left: 17px;
-}
-
-#nav span.helper
-{
-    display: block;
-    height: 1px;
-    margin-top: -4px;
-    visibility: hidden;
-}
-*/
 
 #nav li.minor
 {
