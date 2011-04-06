@@ -1,50 +1,50 @@
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6482F244801F5FD]') AND parent_object_id = OBJECT_ID('[Category]'))
-alter table [Category]  drop constraint FK6482F244801F5FD
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFA88A7FA2CEFF2F6]') AND parent_object_id = OBJECT_ID('[Category]'))
+alter table [Category]  drop constraint FKFA88A7FA2CEFF2F6
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1C2EC218AE3C05E0]') AND parent_object_id = OBJECT_ID('CategoryProduct'))
-alter table CategoryProduct  drop constraint FK1C2EC218AE3C05E0
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF141043C67A5BBC]') AND parent_object_id = OBJECT_ID('CategoryProduct'))
+alter table CategoryProduct  drop constraint FKEF141043C67A5BBC
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1C2EC218FAE6AC78]') AND parent_object_id = OBJECT_ID('CategoryProduct'))
-alter table CategoryProduct  drop constraint FK1C2EC218FAE6AC78
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF1410435F55A6EA]') AND parent_object_id = OBJECT_ID('CategoryProduct'))
+alter table CategoryProduct  drop constraint FKEF1410435F55A6EA
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EF888581E843911]') AND parent_object_id = OBJECT_ID('[OrderItem]'))
-alter table [OrderItem]  drop constraint FK3EF888581E843911
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK59090D7B3A0DB368]') AND parent_object_id = OBJECT_ID('[OrderItem]'))
+alter table [OrderItem]  drop constraint FK59090D7B3A0DB368
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EF88858BFB63F8D]') AND parent_object_id = OBJECT_ID('[OrderItem]'))
-alter table [OrderItem]  drop constraint FK3EF88858BFB63F8D
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK59090D7BA341C5B6]') AND parent_object_id = OBJECT_ID('[OrderItem]'))
+alter table [OrderItem]  drop constraint FK59090D7BA341C5B6
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3117099BC92C4711]') AND parent_object_id = OBJECT_ID('[Order]'))
-alter table [Order]  drop constraint FK3117099BC92C4711
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD1436656C8BFB3CA]') AND parent_object_id = OBJECT_ID('[Order]'))
+alter table [Order]  drop constraint FKD1436656C8BFB3CA
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3117099BB5B5E76]') AND parent_object_id = OBJECT_ID('[Order]'))
-alter table [Order]  drop constraint FK3117099BB5B5E76
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD14366566827A512]') AND parent_object_id = OBJECT_ID('[Order]'))
+alter table [Order]  drop constraint FKD14366566827A512
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3117099B1320ED69]') AND parent_object_id = OBJECT_ID('[Order]'))
-alter table [Order]  drop constraint FK3117099B1320ED69
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD1436656D9A7125]') AND parent_object_id = OBJECT_ID('[Order]'))
+alter table [Order]  drop constraint FKD1436656D9A7125
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA4983CCAE3C05E0]') AND parent_object_id = OBJECT_ID('[ProductVariant]'))
-alter table [ProductVariant]  drop constraint FKEA4983CCAE3C05E0
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1C83FFA2C67A5BBC]') AND parent_object_id = OBJECT_ID('[ProductVariant]'))
+alter table [ProductVariant]  drop constraint FK1C83FFA2C67A5BBC
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC9372F26AE3C05E0]') AND parent_object_id = OBJECT_ID('[ProductVariantOption]'))
-alter table [ProductVariantOption]  drop constraint FKC9372F26AE3C05E0
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6729C397C67A5BBC]') AND parent_object_id = OBJECT_ID('[ProductVariantOption]'))
+alter table [ProductVariantOption]  drop constraint FK6729C397C67A5BBC
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6DAFBC52F8AB4237]') AND parent_object_id = OBJECT_ID('[ProductVariantOptionValue]'))
-alter table [ProductVariantOptionValue]  drop constraint FK6DAFBC52F8AB4237
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK49AC5D002269DB12]') AND parent_object_id = OBJECT_ID('[ProductVariantOptionValue]'))
+alter table [ProductVariantOptionValue]  drop constraint FK49AC5D002269DB12
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6DAFBC52BFB63F8D]') AND parent_object_id = OBJECT_ID('[ProductVariantOptionValue]'))
-alter table [ProductVariantOptionValue]  drop constraint FK6DAFBC52BFB63F8D
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK49AC5D00A341C5B6]') AND parent_object_id = OBJECT_ID('[ProductVariantOptionValue]'))
+alter table [ProductVariantOptionValue]  drop constraint FK49AC5D00A341C5B6
 
 
     if exists (select * from dbo.sysobjects where id = object_id(N'[Address]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [Address]
@@ -142,61 +142,61 @@ alter table [ProductVariantOptionValue]  drop constraint FK6DAFBC52BFB63F8D
     )
 
     alter table [Category] 
-        add constraint FK6482F244801F5FD 
+        add constraint FKFA88A7FA2CEFF2F6 
         foreign key (ParentCategoryID) 
         references [Category]
 
     alter table CategoryProduct 
-        add constraint FK1C2EC218AE3C05E0 
+        add constraint FKEF141043C67A5BBC 
         foreign key (ProductID) 
         references [Product]
 
     alter table CategoryProduct 
-        add constraint FK1C2EC218FAE6AC78 
+        add constraint FKEF1410435F55A6EA 
         foreign key (CategoryID) 
         references [Category]
 
     alter table [OrderItem] 
-        add constraint FK3EF888581E843911 
+        add constraint FK59090D7B3A0DB368 
         foreign key (OrderID) 
         references [Order]
 
     alter table [OrderItem] 
-        add constraint FK3EF88858BFB63F8D 
+        add constraint FK59090D7BA341C5B6 
         foreign key (ProductVariantID) 
         references [ProductVariant]
 
     alter table [Order] 
-        add constraint FK3117099BC92C4711 
+        add constraint FKD1436656C8BFB3CA 
         foreign key (CustomerID) 
         references [Customer]
 
     alter table [Order] 
-        add constraint FK3117099BB5B5E76 
+        add constraint FKD14366566827A512 
         foreign key (ShippingAddressID) 
         references [Address]
 
     alter table [Order] 
-        add constraint FK3117099B1320ED69 
+        add constraint FKD1436656D9A7125 
         foreign key (BillingAddressID) 
         references [Address]
 
     alter table [ProductVariant] 
-        add constraint FKEA4983CCAE3C05E0 
+        add constraint FK1C83FFA2C67A5BBC 
         foreign key (ProductID) 
         references [Product]
 
     alter table [ProductVariantOption] 
-        add constraint FKC9372F26AE3C05E0 
+        add constraint FK6729C397C67A5BBC 
         foreign key (ProductID) 
         references [Product]
 
     alter table [ProductVariantOptionValue] 
-        add constraint FK6DAFBC52F8AB4237 
+        add constraint FK49AC5D002269DB12 
         foreign key (ProductVariantOptionID) 
         references [ProductVariantOption]
 
     alter table [ProductVariantOptionValue] 
-        add constraint FK6DAFBC52BFB63F8D 
+        add constraint FK49AC5D00A341C5B6 
         foreign key (ProductVariantID) 
         references [ProductVariant]
