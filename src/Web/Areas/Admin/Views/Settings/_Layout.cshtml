@@ -14,5 +14,13 @@
     <div@(Model.ActiveSubnav == "regions" ? " class=active" : string.Empty)>
         @Html.ActionLink("Regions & Taxes", string.Empty, "Regions")
     </div>
+    <span class="delim">|</span>
+    <div@(Model.ActiveSubnav == "shipping" ? " class=active" : string.Empty)>
+        @Html.ActionLink("Shipping", string.Empty, "Shipping")
+    </div>
+    <span class="delim">|</span>
+    <div@(Model.ActiveSubnav == "payment" ? " class=active" : string.Empty)>
+        @Html.ActionLink("Payment Modules", string.Empty, "Payment")
+    </div>
 }
 @RenderBody()
