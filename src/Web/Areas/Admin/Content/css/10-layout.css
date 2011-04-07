@@ -82,6 +82,7 @@ a#title-shadow
     font-weight: bold;
     display:block;
     height: 1px;
+    visibility: hidden;
     overflow: hidden;
     margin-top: -1px;
 }
@@ -194,6 +195,7 @@ a#title-shadow
     border: solid 1px #ccc;
     border-top: none;
     margin: 0 -1px;
+    min-height: 250px;
 }
 
 /* Eliminate border in CSS3 browsers */

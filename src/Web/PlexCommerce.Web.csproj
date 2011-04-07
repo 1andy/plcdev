@@ -85,6 +85,8 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllerBase.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RegionsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SettingsController.cs" />
     <Compile Include="Areas\Admin\ViewModels\Customers\CustomersIndexViewModel.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomersController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
@@ -103,7 +105,9 @@
     <Compile Include="Areas\Admin\ViewModels\Products\ProductsSearchViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Products\ProductsViewViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Products\ProductsViewCategoriesViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Regions\RegionsIndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Shared\CustomersViewViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Settings\SettingsIndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Shared\SharedLayoutViewModel.cs" />
     <Compile Include="Common\PlexControllerBase.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -256,6 +260,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Customers\View.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Settings\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Settings\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Settings\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Regions\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Regions\_ViewStart.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

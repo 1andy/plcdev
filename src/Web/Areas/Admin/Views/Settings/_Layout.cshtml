@@ -1,0 +1,18 @@
+﻿@model SharedLayoutViewModel
+@{
+    Model.ActiveTab = "settings";
+    Layout = "../Shared/_Layout.cshtml";
+}
+@section head{
+    @RenderSection("head", false)
+}
+@section subnav{
+    <div@(Model.ActiveSubnav == "index" ? " class=active" : string.Empty)>
+        @Html.ActionLink("General Settings", string.Empty, "Settings")
+    </div>
+    <span class="delim">|</span>
+    <div@(Model.ActiveSubnav == "regions" ? " class=active" : string.Empty)>
+        @Html.ActionLink("Regions & Taxes", string.Empty, "Regions")
+    </div>
+}
+@RenderBody()
