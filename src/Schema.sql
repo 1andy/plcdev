@@ -47,6 +47,12 @@ alter table [ProductVariantOptionValue]  drop constraint FK6DAFBC52F8AB4237
 alter table [ProductVariantOptionValue]  drop constraint FK6DAFBC52BFB63F8D
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK95D91DD6FDAEF19A]') AND parent_object_id = OBJECT_ID('[StateProvince]'))
+alter table [StateProvince]  drop constraint FK95D91DD6FDAEF19A
+
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'[Country]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [Country]
+
     if exists (select * from dbo.sysobjects where id = object_id(N'[Address]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [Address]
 
     if exists (select * from dbo.sysobjects where id = object_id(N'[Category]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [Category]
@@ -66,6 +72,14 @@ alter table [ProductVariantOptionValue]  drop constraint FK6DAFBC52BFB63F8D
     if exists (select * from dbo.sysobjects where id = object_id(N'[ProductVariantOption]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [ProductVariantOption]
 
     if exists (select * from dbo.sysobjects where id = object_id(N'[ProductVariantOptionValue]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [ProductVariantOptionValue]
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'[StateProvince]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [StateProvince]
+
+    create table [Country] (
+        CountryID INT not null,
+       Name NVARCHAR(255) not null,
+       primary key (CountryID)
+    )
 
     create table [Address] (
         AddressID INT IDENTITY NOT NULL,
@@ -141,6 +155,13 @@ alter table [ProductVariantOptionValue]  drop constraint FK6DAFBC52BFB63F8D
       unique (ProductVariantOptionID, ProductVariantID)
     )
 
+    create table [StateProvince] (
+        StateProvinceID INT IDENTITY NOT NULL,
+       Name NVARCHAR(255) not null,
+       CountryID INT not null,
+       primary key (StateProvinceID)
+    )
+
     alter table [Category] 
         add constraint FK6482F244801F5FD 
         foreign key (ParentCategoryID) 
@@ -200,3 +221,8 @@ alter table [ProductVariantOptionValue]  drop constraint FK6DAFBC52BFB63F8D
         add constraint FK6DAFBC52BFB63F8D 
         foreign key (ProductVariantID) 
         references [ProductVariant]
+
+    alter table [StateProvince] 
+        add constraint FK95D91DD6FDAEF19A 
+        foreign key (CountryID) 
+        references [Country]
