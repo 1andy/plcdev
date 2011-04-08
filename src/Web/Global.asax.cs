@@ -43,6 +43,9 @@ namespace PlexCommerce.Web
 
             InitializeNHibernate();
 
+            // create initial data (countries, etc.) if required
+            ObjectFactory.GetInstance<InitialDataCreator>().CreateInitialData();
+
             // set factory for controllers that supports IoC
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
 
@@ -93,9 +96,6 @@ namespace PlexCommerce.Web
                     // ISession has scope of HTTP request
                     x.For<ISession>().HttpContextScoped().Use(context => context.GetInstance<ISessionFactory>().OpenSession());
                 });
-
-            // add initial data (like countries) if required
-            SetupInitialData();
         }
 
         private static void SaveDatabaseSchemaToFile(Configuration configuration)
@@ -127,15 +127,6 @@ namespace PlexCommerce.Web
                     throw new HibernateException("The following errors occurred when trying to setup database:\n"
                         + string.Join(Environment.NewLine, update.Exceptions.Select(e => e.Message)));
                 }
-            }
-        }
-
-        private static void SetupInitialData()
-        {
-            using (var session = ObjectFactory.GetInstance<ISession>())
-            using (var transaction = session.BeginTransaction())
-            {
-                transaction.Commit();
             }
         }
 

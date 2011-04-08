@@ -161,6 +161,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Content\img\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Install\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Web.config" />
@@ -205,6 +206,10 @@
     <ProjectReference Include="..\Data\PlexCommerce.Data.csproj">
       <Project>{5F96C230-9FED-4B75-B796-F48C1F39BA26}</Project>
       <Name>PlexCommerce.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Misc\PlexCommerce.InitialData\PlexCommerce.InitialData.csproj">
+      <Project>{B89B6331-0D60-45C2-8DDA-1871AFDC1A06}</Project>
+      <Name>PlexCommerce.InitialData</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
