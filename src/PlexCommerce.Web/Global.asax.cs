@@ -44,7 +44,7 @@ namespace PlexCommerce.Web
             InitializeNHibernate();
 
             // create initial data (countries, etc.) if required
-            ObjectFactory.GetInstance<InitialDataCreator>().CreateInitialData();
+            ObjectFactory.GetInstance<InitialDataCreator>().CreateInitialDataIfMissing();
 
             // set factory for controllers that supports IoC
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
