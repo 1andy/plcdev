@@ -1,15 +1,19 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
-using NHibernate.Cfg;
+using NHibernate.Dialect;
 using NHibernate.Tool.hbm2ddl;
 using StructureMap;
+using Configuration = NHibernate.Cfg.Configuration;
 
 namespace PlexCommerce.Web
 {
@@ -63,46 +67,81 @@ namespace PlexCommerce.Web
             ObjectFactory.ReleaseAndDisposeAllHttpScopedObjects();
         }
 
-        #region NHibernate Initialization
+        #region NHibernate and Data Initialization
 
         private static void InitializeNHibernate()
         {
-            var databaseConfiguration = MsSqlConfiguration.MsSql2008.ShowSql().ConnectionString(
-                c => c.FromConnectionStringWithKey("PlexCommerceConnection"));
+            var connectionString = ConfigurationManager.ConnectionStrings["PlexCommerceConnection"];
+            if (connectionString == null)
+            {
+                throw new InvalidOperationException("PlexCommerceConnection connection string is not defined in Web.config");
+            }
 
-            // function to create NHibernate's session factory
-            Func<ISessionFactory> createSessionFactory = () => Fluently.Configure().Database(databaseConfiguration)
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Product>())
-                .ExposeConfiguration(SaveSchemaToFile)
-                .BuildSessionFactory();
+            var databaseConfiguration = MsSqlConfiguration.MsSql2008.ShowSql().ConnectionString(connectionString.ConnectionString);
+            var fluentConfiguration = Fluently.Configure().Database(databaseConfiguration).Mappings(m => m.FluentMappings.AddFromAssemblyOf<Product>());
+
+            fluentConfiguration.ExposeConfiguration(SaveDatabaseSchemaToFile);
+            fluentConfiguration.ExposeConfiguration(SetupDatabase);
 
             // initialize IoC support for NHibernate's ISessionFactory and ISession
             ObjectFactory.Initialize(
                 x =>
                 {
                     // ISessionFactory is created once per application
-                    x.For<ISessionFactory>().Singleton().Use(createSessionFactory);
+                    x.For<ISessionFactory>().Singleton().Use(fluentConfiguration.BuildSessionFactory);
 
                     // ISession has scope of HTTP request
                     x.For<ISession>().HttpContextScoped().Use(context => context.GetInstance<ISessionFactory>().OpenSession());
                 });
+
+            // add initial data (like countries) if required
+            SetupInitialData();
         }
 
-        private static void SaveSchemaToFile(Configuration config)
+        private static void SaveDatabaseSchemaToFile(Configuration configuration)
         {
-            var schema = new SchemaExport(config);
+            // save schema to file if SaveShemaToFile variable is defined in <appSettings> section
+            var saveSchemaFile = ConfigurationManager.AppSettings["SaveSchemaToFile"];
+            if (!string.IsNullOrWhiteSpace(saveSchemaFile))
+            {
+                var schema = new SchemaExport(configuration);
+                schema.SetOutputFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, saveSchemaFile));
+                schema.Create(true, false);
+            }
+        }
 
-            // set output file
-            string schemaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\Schema.sql");
-            schema.SetOutputFile(schemaPath);
+        private static void SetupDatabase(Configuration configuration)
+        {
+            try
+            {
+                var validator = new SchemaValidator(configuration);
+                validator.Validate();
+            }
+            catch (HibernateException)
+            {
+                var update = new SchemaUpdate(configuration);
+                update.Execute(true, true);
 
-            // write schema.sql and drop and recreate tables if schema file is missing
-            schema.Create(true, !File.Exists(schemaPath));
+                if (update.Exceptions.Count != 0)
+                {
+                    throw new HibernateException("The following errors occurred when trying to setup database:\n"
+                        + string.Join(Environment.NewLine, update.Exceptions.Select(e => e.Message)));
+                }
+            }
+        }
+
+        private static void SetupInitialData()
+        {
+            using (var session = ObjectFactory.GetInstance<ISession>())
+            using (var transaction = session.BeginTransaction())
+            {
+                transaction.Commit();
+            }
         }
 
         #endregion
 
-        #region Console Out Redirect (primarily for NHibernate)
+        #region Console Out Redirect (for NHibernate logging)
 
         [Conditional("DEBUG")]
         private static void RedirectConsoleOutputToFile()

@@ -51,13 +51,13 @@ alter table [ProductVariantOptionValue]  drop constraint FK6DAFBC52BFB63F8D
 alter table [StateProvince]  drop constraint FK95D91DD6FDAEF19A
 
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'[Country]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [Country]
-
     if exists (select * from dbo.sysobjects where id = object_id(N'[Address]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [Address]
 
     if exists (select * from dbo.sysobjects where id = object_id(N'[Category]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [Category]
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CategoryProduct') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CategoryProduct
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'[Country]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [Country]
 
     if exists (select * from dbo.sysobjects where id = object_id(N'[Customer]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [Customer]
 
@@ -74,12 +74,6 @@ alter table [StateProvince]  drop constraint FK95D91DD6FDAEF19A
     if exists (select * from dbo.sysobjects where id = object_id(N'[ProductVariantOptionValue]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [ProductVariantOptionValue]
 
     if exists (select * from dbo.sysobjects where id = object_id(N'[StateProvince]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [StateProvince]
-
-    create table [Country] (
-        CountryID INT not null,
-       Name NVARCHAR(255) not null,
-       primary key (CountryID)
-    )
 
     create table [Address] (
         AddressID INT IDENTITY NOT NULL,
@@ -99,6 +93,12 @@ alter table [StateProvince]  drop constraint FK95D91DD6FDAEF19A
         CategoryID INT not null,
        ProductID INT not null,
        primary key (ProductID, CategoryID)
+    )
+
+    create table [Country] (
+        CountryID INT not null,
+       Name NVARCHAR(255) not null,
+       primary key (CountryID)
     )
 
     create table [Customer] (
