@@ -203,7 +203,7 @@
     <Content Include="Areas\Admin\Views\Categories\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Data\PlexCommerce.Data.csproj">
+    <ProjectReference Include="..\PlexCommerce.Data\PlexCommerce.Data.csproj">
       <Project>{5F96C230-9FED-4B75-B796-F48C1F39BA26}</Project>
       <Name>PlexCommerce.Data</Name>
     </ProjectReference>

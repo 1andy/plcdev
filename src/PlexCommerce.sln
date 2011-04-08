@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlexCommerce.Web", "Web\PlexCommerce.Web.csproj", "{069B03B8-F196-4F43-A246-CD33CC468F4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlexCommerce.Web", "PlexCommerce.Web\PlexCommerce.Web.csproj", "{069B03B8-F196-4F43-A246-CD33CC468F4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlexCommerce.Data", "Data\PlexCommerce.Data.csproj", "{5F96C230-9FED-4B75-B796-F48C1F39BA26}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlexCommerce.Data", "PlexCommerce.Data\PlexCommerce.Data.csproj", "{5F96C230-9FED-4B75-B796-F48C1F39BA26}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{8252E2D4-D5D4-48C1-8F63-3E0549A72DC1}"
 EndProject
