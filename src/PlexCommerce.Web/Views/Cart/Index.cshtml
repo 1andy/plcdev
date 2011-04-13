@@ -1,0 +1,31 @@
+﻿@model CartIndexViewModel
+<h1>
+    Cart</h1>
+<form method="post">
+<table>
+    @for (int i = 0; i < Model.Form.CartItems.Count; i++)
+    {
+        var item = Model.Form.CartItems[i];
+        var variant = item.Variant;
+        <tr>
+            <td>
+                @Html.HiddenFor(m => m.Form.CartItems[i].VariantId)
+                @variant.Product.Name (@variant.Id)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Form.CartItems[i].Quantity)
+                item(s)
+            </td>
+            <td>
+                @((variant.Price * item.Quantity).ToString("c"))
+            </td>
+            <td>
+                <a href="#" onclick="$(this).closest('tr').find('input').val('').closest('form')[0].submit(); return false">
+                    remove</a>
+            </td>
+        </tr>   
+    }
+</table>
+<input type="submit" />
+</form>
+@Html.ActionLink("Checkout", "Index", "Checkout")
