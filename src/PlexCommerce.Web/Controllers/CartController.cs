@@ -74,112 +74,110 @@ namespace PlexCommerce.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        //[HttpGet]
-        //public ActionResult Checkout(string id)
-        //{
-        //    var model = new CartCheckoutViewModel();
+        ////[HttpGet]
+        ////public ActionResult Checkout(string id)
+        ////{
+        ////    var model = new CartCheckoutViewModel();
 
-        //    return View(model);
-        //}
+        ////    return View(model);
+        ////}
 
-        //[HttpPost]
-        //public ActionResult Checkout([Bind(Prefix = "Form")]CartCheckoutForm form)
-        //{
-        //    var model = new CartCheckoutViewModel();
+        ////[HttpPost]
+        ////public ActionResult Checkout([Bind(Prefix = "Form")]CartCheckoutForm form)
+        ////{
+        ////    var model = new CartCheckoutViewModel();
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        using (var transaction = _session.BeginTransaction())
-        //        {
-        //            // save the data
-        //            var customer = new Customer
-        //                           {
-        //                               Name = form.Name,
-        //                               Email = form.Email,
-        //                               Orders = new List<Order>()
-        //                           };
+        ////    if (ModelState.IsValid)
+        ////    {
+        ////        using (var transaction = _session.BeginTransaction())
+        ////        {
+        ////            // save the data
+        ////            var customer = new Customer
+        ////                           {
+        ////                               Name = form.Name,
+        ////                               Email = form.Email,
+        ////                               Orders = new List<Order>()
+        ////                           };
 
-        //            var order = new Order
-        //                        {
-        //                            ShippingAddress = new Address
-        //                                              {
-        //                                                  Address1 = form.ShippingAddress.Address1
-        //                                              },
-        //                            BillingAddress = new Address
-        //                                             {
-        //                                                 Address1 = form.BillingAddress.Address1
-        //                                             },
-        //                            Items = new List<OrderItem>()
-        //                        };
+        ////            var order = new Order
+        ////                        {
+        ////                            ShippingAddress = new Address
+        ////                                              {
+        ////                                                  Address1 = form.ShippingAddress.Address1
+        ////                                              },
+        ////                            BillingAddress = new Address
+        ////                                             {
+        ////                                                 Address1 = form.BillingAddress.Address1
+        ////                                             },
+        ////                            Items = new List<OrderItem>()
+        ////                        };
 
-        //            customer.AddOrder(order);
+        ////            customer.AddOrder(order);
 
-        //            var cartItems = GetCartItemsFromCookie();
-        //            foreach (var item in cartItems)
-        //            {
-        //                var variant = _session.Get<ProductVariant>(item.Key);
-        //                if (variant == null)
-        //                {
-        //                    continue;
-        //                }
+        ////            var cartItems = GetCartItemsFromCookie();
+        ////            foreach (var item in cartItems)
+        ////            {
+        ////                var variant = _session.Get<ProductVariant>(item.Key);
+        ////                if (variant == null)
+        ////                {
+        ////                    continue;
+        ////                }
 
-        //                var orderItem = new OrderItem
-        //                                {
-        //                                    ProductVariant = variant,
-        //                                    Quantity = item.Value
-        //                                };
+        ////                var orderItem = new OrderItem
+        ////                                {
+        ////                                    ProductVariant = variant,
+        ////                                    Quantity = item.Value
+        ////                                };
 
-        //                order.AddOrderItem(orderItem);
-        //            }
+        ////                order.AddOrderItem(orderItem);
+        ////            }
 
-        //            _session.Save(customer);
+        ////            _session.Save(customer);
 
-        //            transaction.Commit();
-        //        }
-        //    }
+        ////            transaction.Commit();
+        ////        }
+        ////    }
 
-        //    return View(model);
-        //}
-
-
+        ////    return View(model);
+        ////}
     }
 
-    //public class CheckoutController : StoreControllerBase
-    //{
-    //    private readonly ISession _session;
+    ////public class CheckoutController : StoreControllerBase
+    ////{
+    ////    private readonly ISession _session;
 
-    //    #region ctor
+    ////    #region ctor
 
-    //    public CheckoutController(ISession session)
-    //        : base(session)
-    //    {
-    //        _session = session;
-    //    }
+    ////    public CheckoutController(ISession session)
+    ////        : base(session)
+    ////    {
+    ////        _session = session;
+    ////    }
 
-    //    #endregion
+    ////    #endregion
 
-    //    public ActionResult Index(string id)
-    //    {
-    //        // this is get coming from Cart or whatever
+    ////    public ActionResult Index(string id)
+    ////    {
+    ////        // this is get coming from Cart or whatever
 
-    //        // if there is no id, then generate one, put cookie data into session and redirect to /checkout/asdkannqwe
+    ////        // if there is no id, then generate one, put cookie data into session and redirect to /checkout/asdkannqwe
 
-    //        // show email, billing, shipping addresses
-    //    }
+    ////        // show email, billing, shipping addresses
+    ////    }
 
-    //    public ActionResult Options(string id)
-    //    {
-    //        // show select shipping option and select payment option
-    //    }
+    ////    public ActionResult Options(string id)
+    ////    {
+    ////        // show select shipping option and select payment option
+    ////    }
 
-    //    public ActionResult Complete(string id)
-    //    {
-    //        // show payment option dialog (CC fields, or text + Complete button, or redirect to PayPal or whatever).
-    //    }
+    ////    public ActionResult Complete(string id)
+    ////    {
+    ////        // show payment option dialog (CC fields, or text + Complete button, or redirect to PayPal or whatever).
+    ////    }
 
-    //    public ActionResult Confirm(string id)
-    //    {
-    //        // show page with order #, etc.
-    //    }
-    //}
+    ////    public ActionResult Confirm(string id)
+    ////    {
+    ////        // show page with order #, etc.
+    ////    }
+    ////}
 }

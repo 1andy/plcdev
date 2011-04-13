@@ -7,6 +7,7 @@ namespace PlexCommerce.Web.Controllers
 {
     public abstract class StoreControllerBase : PlexControllerBase
     {
+        private const string CartCookieName = "Cart";
         private readonly ISession _session;
 
         protected StoreControllerBase(ISession session)
@@ -26,8 +27,6 @@ namespace PlexCommerce.Web.Controllers
         }
 
         #region Cart Cookie routines
-
-        private const string CartCookieName = "Cart";
 
         protected CartItems GetCartItemsFromCookie()
         {
