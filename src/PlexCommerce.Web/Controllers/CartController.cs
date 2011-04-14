@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -152,43 +151,4 @@ namespace PlexCommerce.Web.Controllers
         ////    return View(model);
         ////}
     }
-
-    ////public class CheckoutController : StoreControllerBase
-    ////{
-    ////    private readonly ISession _session;
-
-    ////    #region ctor
-
-    ////    public CheckoutController(ISession session)
-    ////        : base(session)
-    ////    {
-    ////        _session = session;
-    ////    }
-
-    ////    #endregion
-
-    ////    public ActionResult Index(string id)
-    ////    {
-    ////        // this is get coming from Cart or whatever
-
-    ////        // if there is no id, then generate one, put cookie data into session and redirect to /checkout/asdkannqwe
-
-    ////        // show email, billing, shipping addresses
-    ////    }
-
-    ////    public ActionResult Options(string id)
-    ////    {
-    ////        // show select shipping option and select payment option
-    ////    }
-
-    ////    public ActionResult Complete(string id)
-    ////    {
-    ////        // show payment option dialog (CC fields, or text + Complete button, or redirect to PayPal or whatever).
-    ////    }
-
-    ////    public ActionResult Confirm(string id)
-    ////    {
-    ////        // show page with order #, etc.
-    ////    }
-    ////}
 }
