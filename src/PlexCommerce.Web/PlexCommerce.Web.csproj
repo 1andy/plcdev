@@ -125,6 +125,7 @@
     <Compile Include="Lib\Web\LowercaseRoute.cs" />
     <Compile Include="Lib\Web\LowercaseRouteHelperExtensions.cs" />
     <Compile Include="Lib\Web\StructureMapControllerFactory.cs" />
+    <Compile Include="Lib\Web\Subform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Cart\CartForm.cs" />
     <Compile Include="ViewModels\Checkout\CheckoutInfoViewModel.cs" />
