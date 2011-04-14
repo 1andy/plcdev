@@ -1,5 +1,49 @@
 ﻿@model CheckoutInfoViewModel
+@using System.Linq.Expressions
+@using LinqKit
 <h1>
     Checkout</h1>
-<form>
+<form method="post">
+<label>
+    Contact Email
+    @Html.TextBoxFor(m => m.Form.Email)
+</label>
+<div>
+    <h1>
+        Billing Address</h1>
+    @RenderAddressFor(t => t.Form.BillingAddress)
+    <label>
+        First Name
+        @Html.TextBoxFor(m => m.Form.BillingAddress.FirstName)
+    </label>
+    <label>
+        Last Name
+        @Html.TextBoxFor(m => m.Form.BillingAddress.LastName)
+    </label>
+</div>
+<div>
+    <label>
+        @Html.CheckBoxFor(m => m.Form.ShippingIsSameAsBilling)
+        My shipping address is the same as billing one</label>
+</div>
+<input type="submit" />
 </form>
+@helper RenderAddressFor(Expression<Func<CheckoutInfoViewModel, CheckoutAddressForm>> expr)
+    {
+
+        //Func<Expression<Func<CheckoutAddressForm, string>>, Expression<Func<CheckoutInfoViewModel,string>>> aaa = delegate()
+
+        //var a = Linq.Expr((CheckoutInfoViewModel m) => expr.Invoke(m).FirstName).Expand();
+
+        //Func<Expression<Func<CheckoutInfoViewModel, string>>, Expression<Func<CheckoutInfoViewModel, string>>> help = m => m.Expand();
+
+        Func<Expression<Func<CheckoutAddressForm, string>>, Expression<Func<CheckoutInfoViewModel, string>>> convert =
+                m => Linq.Expr((CheckoutInfoViewModel v) => m.Invoke(expr.Invoke(v))).Expand().Expand();
+
+        //@a
+        //var aa = (Expression<Func<CheckoutInfoViewModel, string>>) Expression.Property(expr, "FirstName");
+        //@Html.TextBoxFor(a)
+@*@Html.TextBoxFor(Linq.Expr((CheckoutInfoViewModel m) => expr.Invoke(m).FirstName).Expand())
+    @Html.TextBoxFor(help(m => expr.Invoke(m).FirstName));*@
+    @Html.TextBoxFor(convert(t => t.FirstName));
+}

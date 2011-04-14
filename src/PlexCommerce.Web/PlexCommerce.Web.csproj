@@ -46,6 +46,9 @@
     <Reference Include="Iesi.Collections">
       <HintPath>..\_lib\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="LinqKit">
+      <HintPath>..\_lib\LinqKit.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\_lib\NHibernate.dll</HintPath>
     </Reference>

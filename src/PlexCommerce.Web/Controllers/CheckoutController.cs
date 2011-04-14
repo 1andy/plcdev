@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Web.Mvc;
+using LinqKit;
 using NHibernate;
 
 namespace PlexCommerce.Web.Controllers
@@ -28,6 +30,7 @@ namespace PlexCommerce.Web.Controllers
             return RedirectToAction("Info", new { id });
         }
 
+        [HttpGet]
         public ActionResult Info(string id)
         {
             var cartItems = (List<CookieCartItem>)Session[id];
@@ -37,6 +40,36 @@ namespace PlexCommerce.Web.Controllers
             // show email, billing, shipping addresses
 
             var model = new CheckoutInfoViewModel();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Info(string id, [Bind(Prefix = "Form")] CheckoutInfoForm form)
+        {
+            //, Expression<Func<CheckoutInfoViewModel, CheckoutAddressForm>> expr
+            //, Expression<Func<CheckoutInfoViewModel, CheckoutAddressForm>> expr
+            var model = new CheckoutInfoViewModel();
+
+            //Expression<Func<CheckoutInfoViewModel, CheckoutAddressForm>> expr;
+
+
+            //Func<Expression<Func<CheckoutAddressForm, string>>, Expression<Func<CheckoutInfoViewModel, string>>> aaa =
+            //    m => Linq.Expr(((CheckoutInfoViewModel t) => m.Invoke(t).FirstName)).Expand();
+
+            //var a = Linq.Expr((CheckoutInfoViewModel m) => expr.Invoke(m).FirstName).Expand();
+            //var a = Linq.Expr((CheckoutAddressForm f) => f.FirstName);
+
+            //Func<Expression<Func<CheckoutAddressForm, string>>, Expression<Func<CheckoutInfoViewModel, string>>> help2 =
+            //delegate(Expression<Func<CheckoutAddressForm, string>> m)
+            //{
+            //    return Linq.Expr(t => m.Invoke(expr.Invoke(Model))).Expand();
+            //};
+
+            //Func<Expression<Func<CheckoutAddressForm, string>>, Expression<Func<CheckoutInfoViewModel, string>>> help2 =
+            //    m => Linq.Expr((CheckoutInfoViewModel v) => m.Invoke(expr.Invoke(v))).Expand().Expand();
+
+            //expr.Compile()
 
             return View(model);
         }
