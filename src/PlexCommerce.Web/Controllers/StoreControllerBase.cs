@@ -26,39 +26,43 @@ namespace PlexCommerce.Web.Controllers
             base.SetAdditionalViewModelData(model);
         }
 
-        #region Cart Cookie routines
+        #region CookieCart
 
-        protected CartItems GetCartItemsFromCookie()
+        protected List<CookieCartItem> GetCookieCart()
         {
+            var cartItems = new List<CookieCartItem>();
+
             var cookie = Request.Cookies[CartCookieName];
-            if (cookie == null || cookie.Value.Length == 0)
+            if (cookie != null && cookie.Value.Length > 0)
             {
-                return new CartItems();
-            }
+                foreach (string value in cookie.Value.Split(','))
+                {
+                    var values = value.Split('|');
+                    var item = new CookieCartItem
+                               {
+                                   VariantId = int.Parse(values[0]),
+                                   Quantity = int.Parse(values[1])
+                               };
 
-            var cartItems = new CartItems();
-
-            foreach (string value in cookie.Value.Split(','))
-            {
-                var items = value.Split('|');
-                cartItems.Add(int.Parse(items[0]), int.Parse(items[1]));
+                    cartItems.Add(item);
+                }
             }
 
             return cartItems;
         }
 
-        protected void SaveCartItemsToCookie(CartItems cartItems)
+        protected void SaveCookieCart(IEnumerable<CookieCartItem> items)
         {
-            string value = string.Join(",", cartItems.Select(ci => string.Format("{0}|{1}", ci.Key, ci.Value)));
+            string value = string.Join(",", items.Select(ci => string.Format("{0}|{1}", ci.VariantId, ci.Quantity)));
             var cookie = new HttpCookie(CartCookieName, value);
             Response.Cookies.Add(cookie);
         }
 
-        /// <summary>
-        /// Key is variant ID, value is quantity
-        /// </summary>
-        protected class CartItems : Dictionary<int, int>
+        protected class CookieCartItem
         {
+            public int VariantId { get; set; }
+
+            public int Quantity { get; set; }
         }
 
         #endregion

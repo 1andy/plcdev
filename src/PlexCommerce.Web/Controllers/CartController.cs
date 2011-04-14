@@ -26,15 +26,15 @@ namespace PlexCommerce.Web.Controllers
         {
             var model = new CartIndexViewModel { Form = new CartForm() };
 
-            var cartItems = GetCartItemsFromCookie();
-            model.Form.CartItems = (from ci in cartItems
-                                    where ci.Value > 0
-                                    let variant = _session.Get<ProductVariant>(ci.Key)
+            var cookieItems = GetCookieCart();
+            model.Form.CartItems = (from ci in cookieItems
+                                    where ci.Quantity > 0
+                                    let variant = _session.Get<ProductVariant>(ci.VariantId)
                                     where variant != null
                                     select new CartFormItem
                                            {
                                                VariantId = variant.Id,
-                                               Quantity = ci.Value,
+                                               Quantity = ci.Quantity,
                                                Variant = variant
                                            }).ToList();
 
@@ -45,31 +45,42 @@ namespace PlexCommerce.Web.Controllers
         public ActionResult Index([Bind(Prefix = "Form")]CartForm form)
         {
             // apply form
-            var carItems = new CartItems();
+            var cookieItems = new List<CookieCartItem>();
             foreach (var formItem in form.CartItems)
             {
-                carItems.Add(formItem.VariantId, formItem.Quantity);
+                var cookieItem = new CookieCartItem
+                                 {
+                                     VariantId = formItem.VariantId,
+                                     Quantity = formItem.Quantity
+                                 };
+                cookieItems.Add(cookieItem);
             }
 
-            SaveCartItemsToCookie(carItems);
+            SaveCookieCart(cookieItems);
 
             return RedirectToAction("Index");
         }
 
         public ActionResult AddToCart(int id)
         {
-            var cartItems = GetCartItemsFromCookie();
+            var cookieItems = GetCookieCart();
 
-            if (cartItems.ContainsKey(id))
+            var itemByVariant = cookieItems.SingleOrDefault(it => it.VariantId == id);
+            if (itemByVariant != null)
             {
-                cartItems[id]++;
+                itemByVariant.Quantity++;
             }
             else
             {
-                cartItems[id] = 1;
+                cookieItems.Add(
+                    new CookieCartItem
+                    {
+                        VariantId = id,
+                        Quantity = 1
+                    });
             }
 
-            SaveCartItemsToCookie(cartItems);
+            SaveCookieCart(cookieItems);
 
             return RedirectToAction("Index");
         }
@@ -114,7 +125,7 @@ namespace PlexCommerce.Web.Controllers
 
         ////            customer.AddOrder(order);
 
-        ////            var cartItems = GetCartItemsFromCookie();
+        ////            var cartItems = GetCookieCart();
         ////            foreach (var item in cartItems)
         ////            {
         ////                var variant = _session.Get<ProductVariant>(item.Key);
