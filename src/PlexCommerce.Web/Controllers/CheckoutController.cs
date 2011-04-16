@@ -34,10 +34,10 @@ namespace PlexCommerce.Web.Controllers
         public ActionResult Info(string id)
         {
             var cartItems = (List<CookieCartItem>)Session[id];
-            if (cartItems == null) return RedirectToAction("Index", "Cart");
-            // if there is no id, then generate one, put cookie data into session and redirect to /checkout/asdkannqwe
-
-            // show email, billing, shipping addresses
+            if (cartItems == null)
+            {
+                return RedirectToAction("Index", "Cart");
+            }
 
             var model = new CheckoutInfoViewModel();
 
@@ -52,19 +52,19 @@ namespace PlexCommerce.Web.Controllers
             return View(model);
         }
 
-        //public ActionResult Options(string id)
-        //{
-        //    // show select shipping option and select payment option
-        //}
+        ////public ActionResult Options(string id)
+        ////{
+        ////    // show select shipping option and select payment option
+        ////}
 
-        //public ActionResult Complete(string id)
-        //{
-        //    // show payment option dialog (CC fields, or text + Complete button, or redirect to PayPal or whatever).
-        //}
+        ////public ActionResult Complete(string id)
+        ////{
+        ////    // show payment option dialog (CC fields, or text + Complete button, or redirect to PayPal or whatever).
+        ////}
 
-        //public ActionResult Confirm(string id)
-        //{
-        //    // show page with order #, etc.
-        //}
+        ////public ActionResult Confirm(string id)
+        ////{
+        ////    // show page with order #, etc.
+        ////}
     }
 }
