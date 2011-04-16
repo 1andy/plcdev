@@ -52,10 +52,19 @@ namespace PlexCommerce.Web.Controllers
             return View(model);
         }
 
-        ////public ActionResult Options(string id)
-        ////{
-        ////    // show select shipping option and select payment option
-        ////}
+        public ActionResult Options(string id)
+        {
+            var cartItems = (List<CookieCartItem>)Session[id];
+            if (cartItems == null)
+            {
+                return RedirectToAction("Index", "Cart");
+            }
+
+            // show select shipping option and select payment option
+
+
+            return null;
+        }
 
         ////public ActionResult Complete(string id)
         ////{
