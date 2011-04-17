@@ -10,11 +10,11 @@
 <div>
     Based on order's
     <label>
-        @Html.RadioButtonFor(m => m.Form.Type, "Weight", new { id = "type-weight-based" })
+        @Html.RadioButtonFor(m => m.Form.Type, "Weight", new { id = "type-weight" })
         Weight
     </label>
     <label>
-        @Html.RadioButtonFor(m => m.Form.Type, "Price", new { id = "type-price-based" })
+        @Html.RadioButtonFor(m => m.Form.Type, "Price", new { id = "type-price" })
         Price
     </label>
 </div>
@@ -22,7 +22,7 @@
     <label>
         Name @Html.TextBoxFor(m => m.Form.Name)</label>
 </div>
-<div id="options-weight-based">
+<div id="options-weight" style="display: none">
     Weight
     <label>
         from
@@ -33,6 +33,17 @@
         @Html.TextBoxFor(m => m.Form.MaxWeight) (lbs)
     </label>
 </div>
+<div id="options-price" style="display: none">
+    Order price
+    <label>
+        from
+        @Html.TextBoxFor(m => m.Form.MinPrice)
+    </label>
+    to
+    <label>
+        @Html.TextBoxFor(m => m.Form.MaxPrice) USD
+    </label>
+</div>
 <div>
     <label>
         Shipping Price
@@ -41,3 +52,22 @@
 </div>
 <input type="submit" />
 </form>
+<script>
+    $(function () {
+        var _curOption;
+        function setTypeOptions() {
+            if (_curOption) {
+                _curOption.hide();
+            }
+            var _checked = $("input[name=Form.Type]:radio:checked");
+            if (_checked.length) {
+                _curOption = $("#" + _checked[0].id.replace("type", "options")).show();
+            } else {
+                _curOption = null;
+            }
+        }
+        setTypeOptions();
+        $("input[name=Form.Type]:radio").click(setTypeOptions);
+    });
+
+</script>
