@@ -1,4 +1,6 @@
-﻿namespace PlexCommerce
+﻿using System;
+
+namespace PlexCommerce
 {
     public class StateProvince
     {
