@@ -7,16 +7,14 @@
 Add shipping option for @Html.DropDownList("country", Model.AddOptionListItems)
 <input type="submit" />
 </form>
-@*@foreach (var country in Model.Countries)
+<h2>
+    Shipping Destinations</h2>
+@foreach (var country in Model.ShippingCountries)
 {
     <h1>@country.Name</h1>
     <div>
-        @if (country.ShippingRates.Count == 0)
-        {
-            <span>You have no shipping rates defined for this location</span>
-        }
         <div>
             <a href="@Url.Action("AddRate")">Add shipping rate</a>
         </div>
     </div>
-}*@
+}

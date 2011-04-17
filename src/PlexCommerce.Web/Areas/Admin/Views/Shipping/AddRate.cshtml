@@ -1,0 +1,43 @@
+﻿@model ShippingAddRateViewModel
+@{
+    Model.PageTitle = "Add Shipping Rate";
+    Model.ActiveSubnav = "shipping";
+}
+<h2>
+    Add Shipping Rate to @Model.Country.Name</h2>
+<form method="post">
+@Html.ValidationSummary()
+<div>
+    Based on order's
+    <label>
+        @Html.RadioButtonFor(m => m.Form.Type, "Weight", new { id = "type-weight-based" })
+        Weight
+    </label>
+    <label>
+        @Html.RadioButtonFor(m => m.Form.Type, "Price", new { id = "type-price-based" })
+        Price
+    </label>
+</div>
+<div>
+    <label>
+        Name @Html.TextBoxFor(m => m.Form.Name)</label>
+</div>
+<div id="options-weight-based">
+    Weight
+    <label>
+        from
+        @Html.TextBoxFor(m => m.Form.MinWeight)
+    </label>
+    to
+    <label>
+        @Html.TextBoxFor(m => m.Form.MaxWeight) (lbs)
+    </label>
+</div>
+<div>
+    <label>
+        Shipping Price
+        @Html.TextBoxFor(m => m.Form.ShippingPrice)
+    </label>
+</div>
+<input type="submit" />
+</form>

@@ -108,7 +108,6 @@ alter table [StateProvince]  drop constraint FK95D91DD6FDAEF19A
     create table [Country] (
         CountryID INT not null,
        Name NVARCHAR(255) not null,
-       Active BIT not null,
        primary key (CountryID)
     )
 
@@ -173,6 +172,7 @@ alter table [StateProvince]  drop constraint FK95D91DD6FDAEF19A
        MaxOrderWeight DECIMAL(19,5) null,
        MinOrderPrice DECIMAL(19,5) null,
        MaxOrderPrice DECIMAL(19,5) null,
+       ShippingPrice MONEY not null,
        CountryID INT not null,
        StateProvinceID INT null,
        primary key (ShippingRateID)

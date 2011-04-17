@@ -12,6 +12,7 @@ namespace PlexCommerce.Mappings
             Map(x => x.MaxOrderWeight);
             Map(x => x.MinOrderPrice);
             Map(x => x.MaxOrderPrice);
+            Map(x => x.ShippingPrice).CustomSqlType("MONEY").Not.Nullable();
 
             References(x => x.Country, "CountryID").Not.Nullable();
             References(x => x.StateProvince, "StateProvinceID");

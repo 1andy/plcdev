@@ -1,4 +1,6 @@
-﻿namespace PlexCommerce
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PlexCommerce
 {
     public class ShippingRate
     {
@@ -20,6 +22,7 @@
 
         public virtual decimal? MaxOrderPrice { get; set; }
 
+        [Required]
         public virtual decimal ShippingPrice { get; set; }
     }
 }

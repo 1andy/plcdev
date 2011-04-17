@@ -5,7 +5,8 @@ namespace PlexCommerce.Web.Areas.Admin
 {
     public class ShippingIndexViewModel : SharedLayoutViewModel
     {
-        //public IList<Country> Countries { get; set; }
         public IEnumerable<SelectListItem> AddOptionListItems { get; set; }
+
+        public IList<Country> ShippingCountries { get; set; }
     }
 }
