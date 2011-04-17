@@ -1,0 +1,11 @@
+﻿@model ShippingIndexViewModel
+@{
+    Model.PageTitle = "Shipping Settings";
+    Model.ActiveSubnav = "shipping";
+}
+@foreach (var country in Model.Countries)
+{
+    <h1>@country.Name</h1>
+    <div>
+    </div>
+}

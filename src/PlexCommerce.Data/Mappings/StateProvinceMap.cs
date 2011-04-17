@@ -10,6 +10,7 @@ namespace PlexCommerce.Mappings
             Map(x => x.Name).Not.Nullable();
 
             References(x => x.Country, "CountryID").Not.Nullable();
+            HasMany(x => x.ShippingRates).KeyColumn("StateProvinceID").Inverse().Cascade.All();
         }
     }
 }

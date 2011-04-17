@@ -47,6 +47,14 @@ alter table [ProductVariantOptionValue]  drop constraint FK6DAFBC52F8AB4237
 alter table [ProductVariantOptionValue]  drop constraint FK6DAFBC52BFB63F8D
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK34DA5A31FDAEF19A]') AND parent_object_id = OBJECT_ID('[ShippingRate]'))
+alter table [ShippingRate]  drop constraint FK34DA5A31FDAEF19A
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK34DA5A318699306F]') AND parent_object_id = OBJECT_ID('[ShippingRate]'))
+alter table [ShippingRate]  drop constraint FK34DA5A318699306F
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK95D91DD6FDAEF19A]') AND parent_object_id = OBJECT_ID('[StateProvince]'))
 alter table [StateProvince]  drop constraint FK95D91DD6FDAEF19A
 
@@ -73,6 +81,8 @@ alter table [StateProvince]  drop constraint FK95D91DD6FDAEF19A
 
     if exists (select * from dbo.sysobjects where id = object_id(N'[ProductVariantOptionValue]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [ProductVariantOptionValue]
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'[ShippingRate]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [ShippingRate]
+
     if exists (select * from dbo.sysobjects where id = object_id(N'[StateProvince]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [StateProvince]
 
     create table [Address] (
@@ -98,6 +108,7 @@ alter table [StateProvince]  drop constraint FK95D91DD6FDAEF19A
     create table [Country] (
         CountryID INT not null,
        Name NVARCHAR(255) not null,
+       Active BIT not null,
        primary key (CountryID)
     )
 
@@ -153,6 +164,18 @@ alter table [StateProvince]  drop constraint FK95D91DD6FDAEF19A
        ProductVariantID INT not null,
        primary key (ProductVariantOptionValue),
       unique (ProductVariantOptionID, ProductVariantID)
+    )
+
+    create table [ShippingRate] (
+        ShippingRateID INT IDENTITY NOT NULL,
+       Name NVARCHAR(255) not null,
+       MinOrderWeight DECIMAL(19,5) null,
+       MaxOrderWeight DECIMAL(19,5) null,
+       MinOrderPrice DECIMAL(19,5) null,
+       MaxOrderPrice DECIMAL(19,5) null,
+       CountryID INT not null,
+       StateProvinceID INT null,
+       primary key (ShippingRateID)
     )
 
     create table [StateProvince] (
@@ -221,6 +244,16 @@ alter table [StateProvince]  drop constraint FK95D91DD6FDAEF19A
         add constraint FK6DAFBC52BFB63F8D 
         foreign key (ProductVariantID) 
         references [ProductVariant]
+
+    alter table [ShippingRate] 
+        add constraint FK34DA5A31FDAEF19A 
+        foreign key (CountryID) 
+        references [Country]
+
+    alter table [ShippingRate] 
+        add constraint FK34DA5A318699306F 
+        foreign key (StateProvinceID) 
+        references [StateProvince]
 
     alter table [StateProvince] 
         add constraint FK95D91DD6FDAEF19A 

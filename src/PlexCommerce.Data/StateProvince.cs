@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PlexCommerce
 {
@@ -9,5 +10,7 @@ namespace PlexCommerce
         public virtual string Name { get; set; }
 
         public virtual Country Country { get; set; }
+
+        public virtual IList<ShippingRate> ShippingRates { get; set; }
     }
 }

@@ -56,6 +56,7 @@
     <Compile Include="Mappings\CategoryMap.cs" />
     <Compile Include="Mappings\ProductMap.cs" />
     <Compile Include="Mappings\ProductVariantOptionValueMap.cs" />
+    <Compile Include="Mappings\ShippingRateMap.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderItem.cs" />
     <Compile Include="Mappings\OrderItemMap.cs" />
