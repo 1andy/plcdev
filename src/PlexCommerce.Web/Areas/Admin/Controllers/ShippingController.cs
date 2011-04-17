@@ -23,7 +23,8 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
         {
             var model = new ShippingIndexViewModel
                         {
-                            Countries = _session.Query<Country>().Where(c => c.Active).OrderBy(c => c.Name).ToList()
+                            AddOptionListItems = new SelectList(_session.Query<Country>(), "Id", "Name", 840)
+                            //,Countries = _session.Query<Country>().Where(c => c.Active).OrderBy(c => c.Name).ToList()
                         };
 
             return View(model);
