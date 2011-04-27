@@ -4,8 +4,8 @@
     Model.ActiveSubnav = "shipping";
 }
 <form action="@Url.Action("AddRate")">
-Add shipping option for @Html.DropDownList("country", Model.AddOptionListItems)
-<input type="submit" />
+Add shipping option to @Html.DropDownList("country", Model.AddOptionListItems)
+<input type="submit" value="Go" />
 </form>
 <h2>
     Shipping Destinations</h2>
@@ -13,8 +13,15 @@ Add shipping option for @Html.DropDownList("country", Model.AddOptionListItems)
 {
     <h1>@country.Name</h1>
     <div>
+        @foreach (var rate in country.ShippingRates)
+        {
+            <div>
+                @rate.Name - @rate.ShippingPrice
+            </div>
+        }
         <div>
-            <a href="@Url.Action("AddRate")">Add shipping rate</a>
+            <a href="@Url.Action("AddRate", new { country = country.Id })">Add another shipping
+                rate</a>
         </div>
     </div>
 }

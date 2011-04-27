@@ -1,4 +1,6 @@
-﻿namespace PlexCommerce.Web.Areas.Admin
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PlexCommerce.Web.Areas.Admin
 {
     public class ShippingAddRateViewModel : SharedLayoutViewModel
     {
@@ -9,6 +11,7 @@
 
     public class ShippingAddRateForm
     {
+        [Required]
         public string Type { get; set; }
 
         public string Name { get; set; }
