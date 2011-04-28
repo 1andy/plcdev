@@ -22,7 +22,6 @@ namespace PlexCommerce
 
         public void SetValue<T>(string key, T value)
         {
-            
         }
     }
 }

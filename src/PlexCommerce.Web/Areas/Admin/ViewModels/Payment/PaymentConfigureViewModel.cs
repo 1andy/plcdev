@@ -6,8 +6,4 @@
 
         public PaymentConfigureForm Form { get; set; }
     }
-
-    public class PaymentConfigureForm
-    {
-    }
 }

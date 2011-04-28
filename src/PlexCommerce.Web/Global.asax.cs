@@ -60,7 +60,6 @@ namespace PlexCommerce.Web
                 scan.AssembliesFromApplicationBaseDirectory();
                 scan.AddAllTypesOf<IPaymentMethod>();
             }));
-
         }
 
         protected void Application_End()
@@ -104,7 +103,6 @@ namespace PlexCommerce.Web
                     // ISession has scope of HTTP request
                     x.For<ISession>().HttpContextScoped().Use(context => context.GetInstance<ISessionFactory>().OpenSession());
                 });
-
         }
 
         private static void SaveDatabaseSchemaToFile(Configuration configuration)
