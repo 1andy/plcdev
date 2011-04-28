@@ -1,4 +1,5 @@
-﻿using System.Web.Routing;
+﻿using System.Text.RegularExpressions;
+using System.Web.Routing;
 
 namespace PlexCommerce.Web
 {
@@ -42,7 +43,8 @@ namespace PlexCommerce.Web
 
             if (path != null)
             {
-                path.VirtualPath = path.VirtualPath.ToLowerInvariant();
+                // try to not replace parameter values
+                path.VirtualPath = Regex.Replace(path.VirtualPath, @"(?<=[/?&]|^)[^/?&=]+(?=[/?&=]|$)", match => match.Value.ToLowerInvariant());
             }
 
             return path;

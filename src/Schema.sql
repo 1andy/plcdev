@@ -81,6 +81,8 @@ alter table [StateProvince]  drop constraint FK95D91DD6FDAEF19A
 
     if exists (select * from dbo.sysobjects where id = object_id(N'[ProductVariantOptionValue]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [ProductVariantOptionValue]
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'[Setting]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [Setting]
+
     if exists (select * from dbo.sysobjects where id = object_id(N'[ShippingRate]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [ShippingRate]
 
     if exists (select * from dbo.sysobjects where id = object_id(N'[StateProvince]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [StateProvince]
@@ -163,6 +165,12 @@ alter table [StateProvince]  drop constraint FK95D91DD6FDAEF19A
        ProductVariantID INT not null,
        primary key (ProductVariantOptionValue),
       unique (ProductVariantOptionID, ProductVariantID)
+    )
+
+    create table [Setting] (
+        SettingID NVARCHAR(255) not null,
+       Value NVARCHAR(MAX) null,
+       primary key (SettingID)
     )
 
     create table [ShippingRate] (

@@ -37,7 +37,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
                                                 Text = pm.Name,
                                                 Value = pm.GetType().Name
                                             },
-                PaymentMethods = paymentMethods.Where(pm => _settings.GetValue<bool>("PaymentMethods.Enabled." + pm.GetType().Name)).ToList()
+                PaymentMethods = paymentMethods.Where(pm => _settings.GetValue<bool>("PaymentMethods." + pm.GetType().Name + ".Enabled")).ToList()
             };
 
             return View(model);
@@ -59,7 +59,8 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                _settings.SetValue("PaymentMethods.Enabled." + model.PaymentMethod.GetType().Name, true);
+                _settings.SetValue("PaymentMethods." + model.PaymentMethod.GetType().Name + ".Enabled", true);
+
                 TempData["SuccessMessage"] = "Payment method has been activated";
                 return RedirectToAction("Index");
             }

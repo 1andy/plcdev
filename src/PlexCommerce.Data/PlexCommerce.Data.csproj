@@ -57,6 +57,7 @@
     <Compile Include="Mappings\CategoryMap.cs" />
     <Compile Include="Mappings\ProductMap.cs" />
     <Compile Include="Mappings\ProductVariantOptionValueMap.cs" />
+    <Compile Include="Mappings\SettingMap.cs" />
     <Compile Include="Mappings\ShippingRateMap.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderItem.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="ProductVariantOptionValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="Setting.cs" />
     <Compile Include="ShippingFutures.cs" />
     <Compile Include="ShippingRate.cs" />
     <Compile Include="StateProvince.cs" />
