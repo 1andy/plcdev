@@ -6,11 +6,11 @@ using NHibernate;
 
 namespace PlexCommerce
 {
-    public class SettingsStorage
+    public class SettingsManager
     {
         private readonly ISession _session;
 
-        public SettingsStorage(ISession session)
+        public SettingsManager(ISession session)
         {
             _session = session;
         }
@@ -18,6 +18,11 @@ namespace PlexCommerce
         public T GetValue<T>(string key)
         {
             return default(T);
+        }
+
+        public void SetValue<T>(string key, T value)
+        {
+            
         }
     }
 }

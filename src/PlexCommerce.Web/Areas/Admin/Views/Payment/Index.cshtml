@@ -1,0 +1,16 @@
+﻿@model PaymentIndexViewModel
+@{
+    Model.PageTitle = "Payment Methods";
+    Model.ActiveSubnav = "payment";
+}
+<form action="@Url.Action("Configure")">
+Activate payment method @Html.DropDownList("method", Model.AddMethodListItems)
+<input type="submit" value="Go" />
+</form>
+@foreach (var method in Model.PaymentMethods)
+{
+    <div>@method.Name
+        <a href="@Url.Action("Configure", new { method = method.GetType().Name })">Configure</a>
+        <a href="@Url.Action("Deactivate", new { method = method.GetType().Name })">Deactivate</a>
+    </div>
+}

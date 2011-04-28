@@ -53,6 +53,14 @@ namespace PlexCommerce.Web
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            // register payment methods
+            ObjectFactory.Configure(x => x.Scan(scan =>
+            {
+                scan.AssembliesFromApplicationBaseDirectory();
+                scan.AddAllTypesOf<IPaymentMethod>();
+            }));
+
         }
 
         protected void Application_End()
@@ -87,7 +95,7 @@ namespace PlexCommerce.Web
             fluentConfiguration.ExposeConfiguration(SetupDatabase);
 
             // initialize IoC support for NHibernate's ISessionFactory and ISession
-            ObjectFactory.Initialize(
+            ObjectFactory.Configure(
                 x =>
                 {
                     // ISessionFactory is created once per application
@@ -96,6 +104,7 @@ namespace PlexCommerce.Web
                     // ISession has scope of HTTP request
                     x.For<ISession>().HttpContextScoped().Use(context => context.GetInstance<ISessionFactory>().OpenSession());
                 });
+
         }
 
         private static void SaveDatabaseSchemaToFile(Configuration configuration)

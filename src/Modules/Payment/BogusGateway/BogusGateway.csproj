@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PlexCommerce.PaymentMethods</RootNamespace>
-    <AssemblyName>PlexCommerce.PaymentMethods.BogusPaymentMethod</AssemblyName>
+    <AssemblyName>PlexCommerce.PaymentMethods.BogusGateway</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
