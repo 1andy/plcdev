@@ -58,7 +58,7 @@ namespace PlexCommerce.Web
             ObjectFactory.Configure(x => x.Scan(scan =>
             {
                 scan.AssembliesFromApplicationBaseDirectory();
-                scan.AddAllTypesOf<IPaymentMethod>();
+                scan.AddAllTypesOf<IPaymentModule>();
             }));
         }
 

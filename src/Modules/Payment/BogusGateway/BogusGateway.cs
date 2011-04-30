@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PlexCommerce.PaymentMethods
 {
-    public class BogusGateway : IPaymentMethod
+    public class BogusGateway : IPaymentModule
     {
         public string Name
         {

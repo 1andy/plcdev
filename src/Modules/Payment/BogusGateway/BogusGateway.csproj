@@ -8,8 +8,8 @@
     <ProjectGuid>{74BFA3CF-E27B-4A84-B507-907FCD81F152}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PlexCommerce.PaymentMethods</RootNamespace>
-    <AssemblyName>PlexCommerce.PaymentMethods.BogusGateway</AssemblyName>
+    <RootNamespace>PlexCommerce.PaymentModules</RootNamespace>
+    <AssemblyName>PlexCommerce.PaymentModules.BogusGateway</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

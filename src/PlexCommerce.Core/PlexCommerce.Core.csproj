@@ -43,8 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IPaymentMethod.cs" />
+    <Compile Include="IPaymentModule.cs" />
     <Compile Include="IShippingMethod.cs" />
+    <Compile Include="PaymentMethodManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsManager.cs" />
   </ItemGroup>

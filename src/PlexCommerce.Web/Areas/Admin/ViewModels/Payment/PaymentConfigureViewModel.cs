@@ -2,7 +2,7 @@
 {
     public class PaymentConfigureViewModel : SharedLayoutViewModel
     {
-        public IPaymentMethod PaymentMethod { get; set; }
+        public IPaymentModule PaymentMethod { get; set; }
 
         public PaymentConfigureForm Form { get; set; }
     }

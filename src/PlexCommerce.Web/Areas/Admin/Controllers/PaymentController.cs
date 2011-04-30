@@ -27,7 +27,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
         public ActionResult Index()
         {
             // TODO: refactor this into service 
-            var paymentMethods = ObjectFactory.GetAllInstances<IPaymentMethod>();
+            var paymentMethods = ObjectFactory.GetAllInstances<IPaymentModule>();
 
             var model = new PaymentIndexViewModel
             {
@@ -70,7 +70,7 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
 
         private void SetupConfigureViewModel(PaymentConfigureViewModel model, string method)
         {
-            model.PaymentMethod = ObjectFactory.GetAllInstances<IPaymentMethod>().SingleOrDefault(pm => pm.GetType().Name == method);
+            model.PaymentMethod = ObjectFactory.GetAllInstances<IPaymentModule>().SingleOrDefault(pm => pm.GetType().Name == method);
             if (model.PaymentMethod == null)
             {
                 throw new HttpException(404, "Not found");

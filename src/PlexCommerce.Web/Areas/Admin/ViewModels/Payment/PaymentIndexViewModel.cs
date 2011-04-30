@@ -7,6 +7,6 @@ namespace PlexCommerce.Web.Areas.Admin
     {
         public IEnumerable<SelectListItem> AddMethodListItems { get; set; }
 
-        public IList<IPaymentMethod> PaymentMethods { get; set; }
+        public IList<IPaymentModule> PaymentMethods { get; set; }
     }
 }
