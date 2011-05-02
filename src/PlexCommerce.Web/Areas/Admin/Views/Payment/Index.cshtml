@@ -4,13 +4,13 @@
     Model.ActiveSubnav = "payment";
 }
 <form action="@Url.Action("Configure")">
-Activate payment method @Html.DropDownList("method", Model.AddMethodListItems)
+Activate payment method @Html.DropDownList("module", Model.AddMethodListItems)
 <input type="submit" value="Go" />
 </form>
 @foreach (var method in Model.PaymentMethods)
 {
     <div>@method.Name
-        <a href="@Url.Action("Configure", new { method = method.GetType().Name })">Configure</a>
-        <a href="@Url.Action("Deactivate", new { method = method.GetType().Name })">Deactivate</a>
+        <a href="@Url.Action("Configure", new { id = method.Id })">Configure</a> <a href="@Url.Action("Deactivate", new { id = method.Id })">
+            Deactivate</a>
     </div>
 }

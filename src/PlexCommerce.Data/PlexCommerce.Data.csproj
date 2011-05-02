@@ -55,6 +55,7 @@
     <Compile Include="Mappings\AddressMap.cs" />
     <Compile Include="Mappings\CustomerMap.cs" />
     <Compile Include="Mappings\CategoryMap.cs" />
+    <Compile Include="Mappings\PaymentMethodMap.cs" />
     <Compile Include="Mappings\ProductMap.cs" />
     <Compile Include="Mappings\ProductVariantOptionValueMap.cs" />
     <Compile Include="Mappings\SettingMap.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="OrderItem.cs" />
     <Compile Include="Mappings\OrderItemMap.cs" />
     <Compile Include="Mappings\OrderMap.cs" />
+    <Compile Include="PaymentMethod.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductCollection.cs" />
     <Compile Include="ProductVariant.cs" />

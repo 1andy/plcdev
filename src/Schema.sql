@@ -73,6 +73,8 @@ alter table [StateProvince]  drop constraint FK95D91DD6FDAEF19A
 
     if exists (select * from dbo.sysobjects where id = object_id(N'[Order]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [Order]
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'[PaymentMethod]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [PaymentMethod]
+
     if exists (select * from dbo.sysobjects where id = object_id(N'[Product]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [Product]
 
     if exists (select * from dbo.sysobjects where id = object_id(N'[ProductVariant]') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table [ProductVariant]
@@ -134,6 +136,14 @@ alter table [StateProvince]  drop constraint FK95D91DD6FDAEF19A
        ShippingAddressID INT null,
        BillingAddressID INT null,
        primary key (OrderID)
+    )
+
+    create table [PaymentMethod] (
+        PaymentMethodID INT IDENTITY NOT NULL,
+       Name NVARCHAR(255) not null,
+       ModuleType NVARCHAR(255) not null,
+       ModuleSettings NVARCHAR(MAX) not null,
+       primary key (PaymentMethodID)
     )
 
     create table [Product] (

@@ -4,7 +4,6 @@ using System.Web;
 using System.Web.Mvc;
 using NHibernate;
 using NHibernate.Linq;
-using StructureMap;
 
 namespace PlexCommerce.Web.Areas.Admin.Controllers
 {
@@ -12,54 +11,67 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
     {
         private readonly ISession _session;
         private readonly SettingsManager _settings;
+        private readonly PaymentModuleManager _paymentModuleManager;
 
         #region ctor
 
-        public PaymentController(ISession session, SettingsManager settings)
+        public PaymentController(ISession session, SettingsManager settings, PaymentModuleManager paymentModuleManager)
             : base(session)
         {
             _session = session;
             _settings = settings;
+            _paymentModuleManager = paymentModuleManager;
         }
 
         #endregion
 
         public ActionResult Index()
         {
-            // TODO: refactor this into service 
-            var paymentMethods = ObjectFactory.GetAllInstances<IPaymentModule>();
-
             var model = new PaymentIndexViewModel
             {
-                AddMethodListItems = from pm in paymentMethods
+                AddMethodListItems = from pm in _paymentModuleManager.GetAvailablePaymentModules()
                                      select new SelectListItem
                                             {
                                                 Text = pm.Name,
-                                                Value = pm.GetType().Name
+                                                Value = pm.ModuleType.Name
                                             },
-                PaymentMethods = paymentMethods.Where(pm => _settings.GetValue<bool>("PaymentMethods." + pm.GetType().Name + ".Enabled")).ToList()
+                PaymentMethods = _session.Query<PaymentMethod>().ToList()
             };
 
             return View(model);
         }
 
-        public ActionResult Configure(string method)
+        public ActionResult Configure(int? id, string module)
         {
             var model = new PaymentConfigureViewModel();
-            SetupConfigureViewModel(model, method);
+            SetupConfigureViewModel(model, module);
 
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Configure([Bind(Prefix = "Form")]PaymentConfigureForm form, string method)
+        public ActionResult Configure([Bind(Prefix = "Form")]PaymentConfigureForm form, string module)
         {
             var model = new PaymentConfigureViewModel();
-            SetupConfigureViewModel(model, method);
+            SetupConfigureViewModel(model, module);
 
             if (ModelState.IsValid)
             {
-                _settings.SetValue("PaymentMethods." + model.PaymentMethod.GetType().Name + ".Enabled", true);
+                var paymentModule = _paymentModuleManager.CreateModule(module);
+                //// TODO: setup paymentModule from form values
+
+                var method = new PaymentMethod
+                {
+                    Name = paymentModule.Name
+                };
+
+                _paymentModuleManager.SaveModuleToMethod(paymentModule, method);
+
+                using (var transaction = _session.BeginTransaction())
+                {
+                    _session.Save(method);
+                    transaction.Commit();
+                }
 
                 TempData["SuccessMessage"] = "Payment method has been activated";
                 return RedirectToAction("Index");
@@ -68,10 +80,10 @@ namespace PlexCommerce.Web.Areas.Admin.Controllers
             return View(model);
         }
 
-        private void SetupConfigureViewModel(PaymentConfigureViewModel model, string method)
+        private void SetupConfigureViewModel(PaymentConfigureViewModel model, string module)
         {
-            model.PaymentMethod = ObjectFactory.GetAllInstances<IPaymentModule>().SingleOrDefault(pm => pm.GetType().Name == method);
-            if (model.PaymentMethod == null)
+            model.ModuleInfo = _paymentModuleManager.GetModuleInfo(module);
+            if (model.ModuleInfo == null)
             {
                 throw new HttpException(404, "Not found");
             }
