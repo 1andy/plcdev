@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payment", "Payment", "{A32F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BogusGateway", "Modules\Payment\BogusGateway\BogusGateway.csproj", "{74BFA3CF-E27B-4A84-B507-907FCD81F152}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomPaymentMethod", "Modules\Payment\CustomPaymentMethod\CustomPaymentMethod.csproj", "{95162FCA-3521-4EC0-A5E1-9E65B3DC5BBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{74BFA3CF-E27B-4A84-B507-907FCD81F152}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74BFA3CF-E27B-4A84-B507-907FCD81F152}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74BFA3CF-E27B-4A84-B507-907FCD81F152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95162FCA-3521-4EC0-A5E1-9E65B3DC5BBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95162FCA-3521-4EC0-A5E1-9E65B3DC5BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95162FCA-3521-4EC0-A5E1-9E65B3DC5BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95162FCA-3521-4EC0-A5E1-9E65B3DC5BBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,5 +57,6 @@ Global
 		{B89B6331-0D60-45C2-8DDA-1871AFDC1A06} = {8252E2D4-D5D4-48C1-8F63-3E0549A72DC1}
 		{A32F963C-2E4C-42E6-83E1-7C8BC6100C58} = {C4DEF2E9-ECEC-431B-8E3F-F670215EFD5D}
 		{74BFA3CF-E27B-4A84-B507-907FCD81F152} = {A32F963C-2E4C-42E6-83E1-7C8BC6100C58}
+		{95162FCA-3521-4EC0-A5E1-9E65B3DC5BBD} = {A32F963C-2E4C-42E6-83E1-7C8BC6100C58}
 	EndGlobalSection
 EndGlobal

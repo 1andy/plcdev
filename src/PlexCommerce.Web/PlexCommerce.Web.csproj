@@ -226,6 +226,10 @@
       <Project>{74BFA3CF-E27B-4A84-B507-907FCD81F152}</Project>
       <Name>BogusGateway</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Modules\Payment\CustomPaymentMethod\CustomPaymentMethod.csproj">
+      <Project>{95162FCA-3521-4EC0-A5E1-9E65B3DC5BBD}</Project>
+      <Name>CustomPaymentMethod</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PlexCommerce.Core\PlexCommerce.Core.csproj">
       <Project>{22D92BAF-56EC-4C76-B645-D9EF9F4D0CA9}</Project>
       <Name>PlexCommerce.Core</Name>
